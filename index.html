@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Studieplan Examens 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #FAFAF8;
+      --surface: #FFFFFF;
+      --surface-2: #F4F4F1;
+      --border: #E8E8E4;
+      --accent: #6366F1;
+      --accent-light: #EEF2FF;
+      --accent-mid: #C7D2FE;
+      --text-primary: #1A1A18;
+      --text-secondary: #6B6B66;
+      --text-muted: #9CA3AF;
+      --urgent: #FEF2F2;
+      --urgent-border: #FECACA;
+      --urgent-text: #991B1B;
+      --soon: #FFFBEB;
+      --soon-border: #FDE68A;
+      --soon-text: #92400E;
+      --good: #F0FDF4;
+      --good-border: #BBF7D0;
+      --good-text: #166534;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.03);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.06), 0 2px 4px rgba(0,0,0,0.04);
+      --shadow-lg: 0 8px 24px rgba(0,0,0,0.08), 0 4px 8px rgba(0,0,0,0.04);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 20px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250,250,248,0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+    }
+    .nav-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+    .nav-logo {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: -0.01em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 4px;
+    }
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      transition: all 0.15s ease;
+    }
+    .nav-links a:hover {
+      color: var(--text-primary);
+      background: var(--surface-2);
+    }
+
+    /* ─── LAYOUT ─── */
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section { padding: 64px 0; }
+
+    h2.section-title {
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+    .section-subtitle {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 32px;
+    }
+
+    /* ─── HERO ─── */
+    #hero {
+      padding: 80px 0 64px;
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--accent);
+      background: var(--accent-light);
+      padding: 4px 12px;
+      border-radius: 100px;
+      margin-bottom: 24px;
+      letter-spacing: 0.02em;
+    }
+    .hero-badge::before {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    .hero-exam-name {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+      letter-spacing: 0.01em;
+    }
+    .hero-countdown {
+      font-size: clamp(56px, 12vw, 96px);
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .hero-countdown span { color: var(--accent); }
+    .hero-label {
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+    }
+    .hero-tagline {
+      font-size: 16px;
+      color: var(--text-secondary);
+      font-weight: 400;
+      max-width: 400px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+    .hero-divider {
+      width: 32px;
+      height: 2px;
+      background: var(--accent-mid);
+      margin: 20px auto;
+      border-radius: 2px;
+    }
+
+    /* ─── EXAM CARDS ─── */
+    #examens { padding-top: 0; }
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .exam-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .exam-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    .exam-card.urgent {
+      background: var(--urgent);
+      border-color: var(--urgent-border);
+    }
+    .exam-card.soon {
+      background: var(--soon);
+      border-color: var(--soon-border);
+    }
+    .exam-card.good {
+      background: var(--good);
+      border-color: var(--good-border);
+    }
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 14px;
+    }
+    .card-subject {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-primary);
+      letter-spacing: -0.01em;
+    }
+    .card-days {
+      font-size: 12px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 100px;
+    }
+    .urgent .card-days {
+      background: var(--urgent-border);
+      color: var(--urgent-text);
+    }
+    .soon .card-days {
+      background: var(--soon-border);
+      color: var(--soon-text);
+    }
+    .good .card-days {
+      background: var(--good-border);
+      color: var(--good-text);
+    }
+    .card-date {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .card-scores {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+    .score-item {
+      text-align: center;
+    }
+    .score-label {
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+    .score-value {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+    }
+    .score-value.accent { color: var(--accent); }
+    .score-divider {
+      width: 1px;
+      background: var(--border);
+      margin: 0 4px;
+    }
+    .card-note {
+      margin-top: 12px;
+      font-size: 11px;
+      color: var(--text-secondary);
+      padding: 8px 10px;
+      background: rgba(255,255,255,0.5);
+      border-radius: var(--radius-sm);
+    }
+
+    /* ─── WEEK PLANNING ─── */
+    .weeks-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .week-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s ease;
+    }
+    .week-item:hover {
+      box-shadow: var(--shadow-md);
+    }
+    .week-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 20px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .week-number {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--accent);
+      background: var(--accent-light);
+      padding: 3px 8px;
+      border-radius: 100px;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+    .week-date-range {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+      flex: 1;
+    }
+    .week-arrow {
+      font-size: 14px;
+      color: var(--text-muted);
+      transition: transform 0.2s ease;
+    }
+    .week-item.open .week-arrow { transform: rotate(180deg); }
+    .week-body {
+      display: none;
+      padding: 0 20px 20px;
+    }
+    .week-item.open .week-body { display: block; }
+    .week-tasks {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .week-task {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+    .week-task::before {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-mid);
+      margin-top: 7px;
+      flex-shrink: 0;
+    }
+    .week-task strong { color: var(--text-primary); }
+    .week-highlight {
+      margin-top: 12px;
+      padding: 10px 14px;
+      background: var(--accent-light);
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* ─── SUBJECT APPROACH TABS ─── */
+    .tabs-wrapper { }
+    .tab-buttons {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .tab-btn {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 7px 14px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .tab-btn:hover {
+      color: var(--text-primary);
+      border-color: var(--accent-mid);
+    }
+    .tab-btn.active {
+      color: var(--accent);
+      background: var(--accent-light);
+      border-color: var(--accent-mid);
+    }
+    .tab-content {
+      display: none;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: var(--shadow-sm);
+    }
+    .tab-content.active { display: block; }
+    .approach-section {
+      margin-bottom: 24px;
+    }
+    .approach-section:last-child { margin-bottom: 0; }
+    .approach-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .approach-items {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .approach-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .approach-item .icon {
+      font-size: 14px;
+      margin-top: 1px;
+      flex-shrink: 0;
+    }
+    .approach-item strong { color: var(--text-primary); }
+
+    .zin-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    .zin-card {
+      background: var(--surface-2);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+    }
+    .zin-num {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .zin-type {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+    .zin-template {
+      font-size: 13px;
+      color: var(--text-secondary);
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    /* ─── TRACKER ─── */
+    .tracker-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    @media (max-width: 640px) {
+      .tracker-layout { grid-template-columns: 1fr; }
+    }
+    .tracker-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+    .tracker-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 20px;
+    }
+
+    /* daily checklist */
+    .day-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .day-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      user-select: none;
+    }
+    .day-item:hover { border-color: var(--accent-mid); background: var(--accent-light); }
+    .day-item.checked {
+      background: var(--surface-2);
+      border-color: var(--border);
+    }
+    .day-item.checked .day-text { text-decoration: line-through; color: var(--text-muted); }
+    .day-checkbox {
+      width: 16px;
+      height: 16px;
+      border-radius: 4px;
+      border: 1.5px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.15s ease;
+      font-size: 10px;
+      color: white;
+    }
+    .day-item.checked .day-checkbox {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+    .day-date {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      min-width: 36px;
+    }
+    .day-text {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    /* progress bars */
+    .progress-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .progress-item {}
+    .progress-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 6px;
+    }
+    .progress-name {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+    .progress-count {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+    .progress-track {
+      height: 6px;
+      background: var(--surface-2);
+      border-radius: 3px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 3px;
+      transition: width 0.4s ease;
+    }
+    .progress-btns {
+      display: flex;
+      gap: 6px;
+      margin-top: 6px;
+    }
+    .prog-btn {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .prog-btn:hover {
+      background: var(--accent-light);
+      border-color: var(--accent-mid);
+      color: var(--accent);
+    }
+
+    /* ─── TIPS ─── */
+    .tips-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 14px;
+    }
+    .tip-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 18px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s ease;
+    }
+    .tip-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    .tip-icon {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+    .tip-text {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .tip-text strong { color: var(--text-primary); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 640px) {
+      section { padding: 40px 0; }
+      .container { padding: 0 16px; }
+      .nav-links { display: none; }
+      .cards-grid { grid-template-columns: 1fr; }
+      .tab-buttons { gap: 4px; }
+      .tab-btn { font-size: 12px; padding: 6px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">Studieplan '26</div>
+    <div class="nav-links">
+      <a href="#examens">Examens</a>
+      <a href="#planning">Planning</a>
+      <a href="#aanpak">Aanpak</a>
+      <a href="#tracker">Tracker</a>
+      <a href="#tips">Tips</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-badge">Examenseizoen 2026</div>
+    <div class="hero-exam-name" id="hero-exam-name">Volgend examen</div>
+    <div class="hero-countdown"><span id="hero-days">—</span></div>
+    <div class="hero-label" id="hero-label">dagen te gaan</div>
+    <div class="hero-divider"></div>
+    <p class="hero-tagline">Rustig. Gestructureerd. Eén dag tegelijk — zo kom je er doorheen.</p>
+  </div>
+</section>
+
+<!-- EXAMENS -->
+<section id="examens">
+  <div class="container">
+    <h2 class="section-title">Examenoverzicht</h2>
+    <p class="section-subtitle">Zes vakken, zes kansen.</p>
+    <div class="cards-grid" id="cards-grid"></div>
+  </div>
+</section>
+
+<!-- WEEK PLANNING -->
+<section id="planning">
+  <div class="container">
+    <h2 class="section-title">Week-voor-week planning</h2>
+    <p class="section-subtitle">Elke week één focus — geen overpeinzing, gewoon doen.</p>
+    <div class="weeks-list" id="weeks-list"></div>
+  </div>
+</section>
+
+<!-- AANPAK PER VAK -->
+<section id="aanpak">
+  <div class="container">
+    <h2 class="section-title">Aanpak per vak</h2>
+    <p class="section-subtitle">Concrete technieken die werken tijdens examens.</p>
+    <div class="tabs-wrapper">
+      <div class="tab-buttons" id="tab-buttons"></div>
+      <div id="tab-panels"></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRACKER -->
+<section id="tracker">
+  <div class="container">
+    <h2 class="section-title">Dagelijkse tracker</h2>
+    <p class="section-subtitle">Vink af, bouw momentum op.</p>
+    <div class="tracker-layout">
+      <div class="tracker-card">
+        <div class="tracker-title">Taken per dag</div>
+        <div class="day-list" id="day-list"></div>
+      </div>
+      <div class="tracker-card">
+        <div class="tracker-title">Oefenexamens voortgang</div>
+        <div class="progress-list" id="progress-list"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIPS -->
+<section id="tips">
+  <div class="container">
+    <h2 class="section-title">Examentips</h2>
+    <p class="section-subtitle">Vijf principes om bij te houden tijdens elke toets.</p>
+    <div class="tips-grid" id="tips-grid"></div>
+  </div>
+</section>
+
+<footer>
+  Succes. Jij kan dit. &nbsp;·&nbsp; Voortgang wordt lokaal opgeslagen
+</footer>
+
+<script>
+// ─── DATA ───────────────────────────────────────────────────────────────────
+
+const EXAMS = [
+  { subject: 'Nederlands',       date: '2026-05-08', se: 4.1, ceNeeded: 6.9, doel: 5.5, urgent: true },
+  { subject: 'Economie',         date: '2026-05-11', se: null, ceNeeded: null, doel: null },
+  { subject: 'Geschiedenis',     date: '2026-05-12', se: 4.8, ceNeeded: 6.2, doel: 5.5, urgent: true },
+  { subject: 'Engels',           date: '2026-05-18', se: null, ceNeeded: null, doel: null },
+  { subject: 'Wiskunde A',       date: '2026-05-19', se: null, ceNeeded: null, doel: null },
+  { subject: 'Bedrijfseconomie', date: '2026-05-22', se: null, ceNeeded: null, doel: null },
+];
+
+const WEEKS = [
+  {
+    label: 'Week 1',
+    range: '9 – 15 apr',
+    tasks: [
+      { text: '<strong>Nederlands</strong> — oefenexamens starten, focus op techniek en tijdsbeheer' },
+      { text: '<strong>Geschiedenis Duitsland</strong> — theorie leren: begrippen + tijdlijn 1918–1991' },
+    ],
+    highlight: null,
+  },
+  {
+    label: 'Week 2',
+    range: '16 – 22 apr',
+    tasks: [
+      { text: '<strong>Nederlands</strong> — volledige examens op tijd maken' },
+      { text: '<strong>Geschiedenis Brits Rijk</strong> — kolonisatie, slavernij, industriële revolutie, India' },
+      { text: '<strong>Economie</strong> — begrippen beginnen' },
+    ],
+    highlight: null,
+  },
+  {
+    label: 'Week 3',
+    range: '23 – 29 apr',
+    tasks: [
+      { text: '<strong>Nederlands</strong> — foutanalyse, zwakke punten aanpakken' },
+      { text: '<strong>Geschiedenis Nederland</strong> — 1948–2008: wederopbouw, Koude Oorlog, jaren 60' },
+      { text: '<strong>Economie & Bedrijfseconomie</strong> — oude examens maken op tijd' },
+    ],
+    highlight: null,
+  },
+  {
+    label: 'Week 4',
+    range: '30 apr – 7 mei',
+    tasks: [
+      { text: '<strong>Alle vakken herhalen</strong> — geen nieuwe stof leren' },
+      { text: '<strong>7 mei</strong> — alleen rust en kort doornemen. Geen stress.' },
+    ],
+    highlight: '7 mei = rustdag. Geen nieuwe stof. Slaap vroeg.',
+  },
+  {
+    label: 'Week 5',
+    range: '8 – 12 mei',
+    tasks: [
+      { text: '<strong>8 mei</strong> — Nederlands examen. Direct daarna focus switchen naar Economie.' },
+      { text: '<strong>11 mei</strong> — Economie examen. Daarna direct overschakelen naar Geschiedenis.' },
+      { text: '<strong>12 mei</strong> — Geschiedenis examen.' },
+    ],
+    highlight: 'Na elk examen: nooit terugkijken — direct switchen naar volgend vak.',
+  },
+  {
+    label: 'Week 6',
+    range: '13 – 22 mei',
+    tasks: [
+      { text: '<strong>Engels</strong> — leestechniek + woordenschat herhalen (18 mei)' },
+      { text: '<strong>Wiskunde A</strong> — formules, oude opgaven (19 mei)' },
+      { text: '<strong>Bedrijfseconomie</strong> — begrippen + berekeningen (22 mei)' },
+    ],
+    highlight: null,
+  },
+];
+
+const SUBJECTS_APPROACH = [
+  {
+    id: 'nl',
+    label: 'Nederlands',
+    sections: [
+      {
+        title: 'Technieken',
+        items: [
+          { icon: '①', text: '<strong>Vraag samenvatten</strong> — 5 seconden: zeg in eigen woorden wat gevraagd wordt vóór je begint' },
+          { icon: '②', text: '<strong>Dump-en-koppel</strong> — steekwoorden dumpen op kladpapier, daarna pas formuleren' },
+          { icon: '③', text: '<strong>Timed micro-oefening</strong> — 90 seconden per vraag, bewust net te krap' },
+        ],
+      },
+      {
+        title: 'Tijdsindeling',
+        items: [
+          { icon: '⏱', text: '<strong>1 punt = 1 minuut</strong> — bereken je tijd per tekst voor je begint' },
+          { icon: '📖', text: '<strong>Leestijd</strong> — 5 min per pagina, telt NIET mee bij puntentijd' },
+          { icon: '🔁', text: '<strong>Leerstrategie</strong> — vragen scannen → alinea lezen → vraag beantwoorden → volgende alinea. Hele-tekst vragen altijd als laatste.' },
+        ],
+      },
+      {
+        title: '6 Zinsstructuren',
+        type: 'zinnen',
+        zinnen: [
+          { num: '1', type: 'Verklaar / leg uit', template: '"[Oorzaak], waardoor/omdat [gevolg]"' },
+          { num: '2', type: 'Hoe weet je dat', template: '"Uit [alinea X] blijkt dat [conclusie]. Dit toont aan dat [koppeling]"' },
+          { num: '3', type: 'Vergelijk', template: '"[A] doet [X], terwijl [B] [Y] doet. Het verschil is..."' },
+          { num: '4', type: 'Functie van', template: '"De functie van [X] is om [doel]. Hierdoor [effect]"' },
+          { num: '5', type: 'Mening auteur', template: '"De auteur vindt dat [standpunt]. Dit blijkt uit [bewijs]"' },
+          { num: '6', type: 'Hoofdgedachte', template: '"De auteur betoogt dat [kern]. Hij onderbouwt dit door [argumenten]"' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'gesch',
+    label: 'Geschiedenis',
+    sections: [
+      {
+        title: 'Drie tijdvakken',
+        items: [
+          { icon: '🌍', text: '<strong>Brits Rijk 1600–1900</strong> — Kolonisatie Noord-Amerika, slavernij & abolitionisme (1807/1833), industriële revolutie, India (1765, opstand 1857, INC 1885)' },
+          { icon: '🇩🇪', text: '<strong>Duitsland 1918–1991</strong> — Weimar 1918 → Nazi 1933 → BRD & DDR 1945 → Hereniging 1991. Kernvraag: waarom mislukte democratie de eerste keer?' },
+          { icon: '🇳🇱', text: '<strong>Nederland 1948–2008</strong> — Wederopbouw + Marshallhulp, geleide loonpolitiek, gasveld 1959, culturele revolutie jaren 60–70, emancipatie, verzorgingsstaat' },
+        ],
+      },
+      {
+        title: 'Leermethode',
+        items: [
+          { icon: '✍️', text: '<strong>Begrippen</strong> — opschrijven → betekenis + voorbeeld → papiertje omleggen → uit hoofd herhalen' },
+          { icon: '📝', text: '<strong>Open vragen</strong> — dump-en-koppel + structuur: "[Factor] zorgde voor [gevolg] omdat [uitleg]"' },
+          { icon: '🔗', text: '<strong>Causaliteit</strong> — altijd minimaal 2 oorzaken noemen' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'eco',
+    label: 'Eco & Beco',
+    sections: [
+      {
+        title: 'Aanpak',
+        items: [
+          { icon: '📚', text: '<strong>Stap 1</strong> — Theorie en begrippen kennen, geen uitzonderingen' },
+          { icon: '📝', text: '<strong>Stap 2</strong> — Oude examens maken op tijd, net als bij het echte examen' },
+          { icon: '🔄', text: '<strong>Stap 3</strong> — Foutanalyse: begrijp elke fout voor je verder gaat' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'en',
+    label: 'Engels',
+    sections: [
+      {
+        title: 'Aanpak',
+        items: [
+          { icon: '👁', text: '<strong>Leestrategie</strong> — zelfde als Nederlands: vragen scannen vóór je de tekst leest' },
+          { icon: '🔤', text: '<strong>Woordenschat</strong> — contextueel raden, gebruik de tekst' },
+          { icon: '⏱', text: '<strong>Tijdsbeheer</strong> — 1 punt = 1 minuut, leestijd apart' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'wisk',
+    label: 'Wiskunde A',
+    sections: [
+      {
+        title: 'Aanpak',
+        items: [
+          { icon: '📋', text: '<strong>Eerste stap</strong> — dump alle relevante formules op kladpapier vóórdat je begint' },
+          { icon: '➡️', text: '<strong>Vastlopen</strong> — direct doorgaan naar de volgende vraag, later terugkomen' },
+          { icon: '🔢', text: '<strong>Tussenstappen</strong> — schrijf alles op, ook als je niet zeker bent' },
+        ],
+      },
+    ],
+  },
+];
+
+const DAILY_TASKS = [
+  { date: 'do 9/4',  task: 'Start Nederlands: lees aanpaktips door, maak eerste oefentekst op tijd' },
+  { date: 'vr 10/4', task: 'Nederlands: analyseer antwoorden, werk aan dump-en-koppel techniek' },
+  { date: 'za 11/4', task: 'Duitsland theorie: tijdlijn 1918–1933 opschrijven en begrijpen' },
+  { date: 'zo 12/4', task: 'Duitsland theorie: tijdlijn 1933–1991, begrippen herhalen' },
+  { date: 'ma 13/4', task: 'Nederlands oefenexamen op tijd (90 min), foutanalyse daarna' },
+  { date: 'di 14/4', task: 'Duitsland: kernvraag democratie uitwerken in eigen woorden' },
+  { date: 'wo 15/4', task: 'Nederlands: focuspunten uit week 1 verwerken' },
+  { date: 'do 16/4', task: 'Nederlands volledig oefenexamen op tijd met stopwatch' },
+  { date: 'vr 17/4', task: 'Brits Rijk: kolonisatie + slavernij leren' },
+  { date: 'za 18/4', task: 'Brits Rijk: industriële revolutie + India (data + begrippen)' },
+  { date: 'zo 19/4', task: 'Economie: begrippen doorwerken, lijst maken' },
+  { date: 'ma 20/4', task: 'Nederlands oefenexamen + leestrategie oefenen' },
+  { date: 'di 21/4', task: 'Economie begrippen herhalen + eerste oefenvragen' },
+  { date: 'wo 22/4', task: 'Alles week 2 kort herhalen' },
+];
+
+const PROGRESS_ITEMS = [
+  { subject: 'Nederlands',       goal: 10, key: 'prog_nl' },
+  { subject: 'Geschiedenis',     goal: 6,  key: 'prog_gesch' },
+  { subject: 'Economie',         goal: 4,  key: 'prog_eco' },
+  { subject: 'Bedrijfseconomie', goal: 4,  key: 'prog_beco' },
+  { subject: 'Engels',           goal: 4,  key: 'prog_en' },
+  { subject: 'Wiskunde A',       goal: 4,  key: 'prog_wisk' },
+];
+
+const TIPS = [
+  { icon: '⏱', text: '<strong>1 punt = 1 minuut</strong> — reken je tijd per tekst uit voor je begint' },
+  { icon: '➡️', text: '<strong>Vastlopen = doorgaan</strong> — kom later terug, verlies geen punten aan één vraag' },
+  { icon: '🔄', text: '<strong>Na elk examen: switchen</strong> — nooit terugkijken, direct focus op volgend vak' },
+  { icon: '😴', text: '<strong>7 mei = rust</strong> — geen nieuwe stof, alleen kort doornemen en vroeg slapen' },
+  { icon: '📖', text: '<strong>Leestijd is apart</strong> — tel het niet mee bij je puntentijd, plan het expliciet' },
+];
+
+// ─── HELPERS ────────────────────────────────────────────────────────────────
+
+function today() {
+  const d = new Date();
+  return new Date(d.getFullYear(), d.getMonth(), d.getDate());
+}
+
+function parseDate(str) {
+  const [y, m, d] = str.split('-').map(Number);
+  return new Date(y, m - 1, d);
+}
+
+function daysUntil(dateStr) {
+  const diff = parseDate(dateStr) - today();
+  return Math.ceil(diff / 86400000);
+}
+
+function formatDate(str) {
+  const d = parseDate(str);
+  return d.toLocaleDateString('nl-NL', { day: 'numeric', month: 'long' });
+}
+
+// ─── HERO ───────────────────────────────────────────────────────────────────
+
+function renderHero() {
+  const upcoming = EXAMS.filter(e => daysUntil(e.date) >= 0);
+  if (upcoming.length === 0) {
+    document.getElementById('hero-days').textContent = '🎉';
+    document.getElementById('hero-exam-name').textContent = 'Klaar!';
+    document.getElementById('hero-label').textContent = 'Alle examens voorbij';
+    return;
+  }
+  const next = upcoming[0];
+  const days = daysUntil(next.date);
+  document.getElementById('hero-exam-name').textContent = next.subject + ' — ' + formatDate(next.date);
+  document.getElementById('hero-days').textContent = days;
+  document.getElementById('hero-label').textContent = days === 1 ? 'dag te gaan' : 'dagen te gaan';
+}
+
+// ─── EXAM CARDS ─────────────────────────────────────────────────────────────
+
+function urgencyClass(days) {
+  if (days <= 7) return 'urgent';
+  if (days <= 21) return 'soon';
+  return 'good';
+}
+
+function renderCards() {
+  const grid = document.getElementById('cards-grid');
+  grid.innerHTML = EXAMS.map(e => {
+    const days = daysUntil(e.date);
+    const cls = days < 0 ? '' : urgencyClass(days);
+    const daysLabel = days < 0 ? 'Voorbij' : days === 0 ? 'Vandaag!' : `${days}d`;
+
+    let scores = '';
+    if (e.se !== null) {
+      scores = `
+        <div class="card-scores">
+          <div class="score-item">
+            <div class="score-label">SE</div>
+            <div class="score-value">${e.se}</div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">CE nodig</div>
+            <div class="score-value accent">${e.ceNeeded}</div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">Doel</div>
+            <div class="score-value">${e.doel}</div>
+          </div>
+        </div>
+        <div class="card-note">SE is laag — focus op CE, elk punt telt.</div>
+      `;
+    } else {
+      scores = `<div class="card-note" style="margin-top:0;">Voldoende — handhaven &amp; vertrouwen houden.</div>`;
+    }
+
+    return `
+      <div class="exam-card ${cls}">
+        <div class="card-top">
+          <div class="card-subject">${e.subject}</div>
+          <div class="card-days">${daysLabel}</div>
+        </div>
+        <div class="card-date">${formatDate(e.date)}</div>
+        ${scores}
+      </div>
+    `;
+  }).join('');
+}
+
+// ─── WEEK PLANNING ──────────────────────────────────────────────────────────
+
+function renderWeeks() {
+  const list = document.getElementById('weeks-list');
+  list.innerHTML = WEEKS.map((w, i) => `
+    <div class="week-item" id="week-${i}">
+      <div class="week-header" onclick="toggleWeek(${i})">
+        <span class="week-number">${w.label}</span>
+        <span class="week-date-range">${w.range}</span>
+        <span class="week-arrow">▾</span>
+      </div>
+      <div class="week-body">
+        <ul class="week-tasks">
+          ${w.tasks.map(t => `<li class="week-task">${t.text}</li>`).join('')}
+        </ul>
+        ${w.highlight ? `<div class="week-highlight">${w.highlight}</div>` : ''}
+      </div>
+    </div>
+  `).join('');
+
+  // open current week by default
+  const todayMs = today().getTime();
+  const weekDates = [
+    ['2026-04-09','2026-04-15'],
+    ['2026-04-16','2026-04-22'],
+    ['2026-04-23','2026-04-29'],
+    ['2026-04-30','2026-05-07'],
+    ['2026-05-08','2026-05-12'],
+    ['2026-05-13','2026-05-22'],
+  ];
+  let opened = false;
+  weekDates.forEach(([s, e], i) => {
+    if (todayMs >= parseDate(s).getTime() && todayMs <= parseDate(e).getTime()) {
+      document.getElementById(`week-${i}`).classList.add('open');
+      opened = true;
+    }
+  });
+  if (!opened) document.getElementById('week-0').classList.add('open');
+}
+
+function toggleWeek(i) {
+  document.getElementById(`week-${i}`).classList.toggle('open');
+}
+
+// ─── SUBJECT TABS ────────────────────────────────────────────────────────────
+
+function renderTabs() {
+  const btnContainer = document.getElementById('tab-buttons');
+  const panelContainer = document.getElementById('tab-panels');
+
+  btnContainer.innerHTML = SUBJECTS_APPROACH.map((s, i) => `
+    <button class="tab-btn ${i === 0 ? 'active' : ''}" onclick="switchTab('${s.id}')">${s.label}</button>
+  `).join('');
+
+  panelContainer.innerHTML = SUBJECTS_APPROACH.map((s, i) => `
+    <div class="tab-content ${i === 0 ? 'active' : ''}" id="tab-${s.id}">
+      ${s.sections.map(sec => {
+        if (sec.type === 'zinnen') {
+          return `
+            <div class="approach-section">
+              <div class="approach-title">${sec.title}</div>
+              <div class="zin-grid">
+                ${sec.zinnen.map(z => `
+                  <div class="zin-card">
+                    <div class="zin-num">Structuur ${z.num}</div>
+                    <div class="zin-type">${z.type}</div>
+                    <div class="zin-template">${z.template}</div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          `;
+        }
+        return `
+          <div class="approach-section">
+            <div class="approach-title">${sec.title}</div>
+            <ul class="approach-items">
+              ${sec.items.map(item => `
+                <li class="approach-item">
+                  <span class="icon">${item.icon}</span>
+                  <span>${item.text}</span>
+                </li>
+              `).join('')}
+            </ul>
+          </div>
+        `;
+      }).join('')}
+    </div>
+  `).join('');
+}
+
+function switchTab(id) {
+  document.querySelectorAll('.tab-btn').forEach((btn, i) => {
+    btn.classList.toggle('active', SUBJECTS_APPROACH[i].id === id);
+  });
+  document.querySelectorAll('.tab-content').forEach(panel => {
+    panel.classList.toggle('active', panel.id === `tab-${id}`);
+  });
+}
+
+// ─── TRACKER ────────────────────────────────────────────────────────────────
+
+function loadChecked() {
+  try { return JSON.parse(localStorage.getItem('checked_days') || '{}'); } catch { return {}; }
+}
+function saveChecked(obj) {
+  localStorage.setItem('checked_days', JSON.stringify(obj));
+}
+
+function renderDayList() {
+  const checked = loadChecked();
+  const list = document.getElementById('day-list');
+  list.innerHTML = DAILY_TASKS.map((item, i) => `
+    <div class="day-item ${checked[i] ? 'checked' : ''}" onclick="toggleDay(${i})">
+      <div class="day-checkbox">${checked[i] ? '✓' : ''}</div>
+      <div class="day-date">${item.date}</div>
+      <div class="day-text">${item.task}</div>
+    </div>
+  `).join('');
+}
+
+function toggleDay(i) {
+  const checked = loadChecked();
+  checked[i] = !checked[i];
+  saveChecked(checked);
+  renderDayList();
+}
+
+function loadProgress() {
+  try { return JSON.parse(localStorage.getItem('exam_progress') || '{}'); } catch { return {}; }
+}
+function saveProgress(obj) {
+  localStorage.setItem('exam_progress', JSON.stringify(obj));
+}
+
+function renderProgress() {
+  const prog = loadProgress();
+  const list = document.getElementById('progress-list');
+  list.innerHTML = PROGRESS_ITEMS.map(item => {
+    const done = prog[item.key] || 0;
+    const pct = Math.min(100, Math.round((done / item.goal) * 100));
+    return `
+      <div class="progress-item">
+        <div class="progress-top">
+          <span class="progress-name">${item.subject}</span>
+          <span class="progress-count">${done} / ${item.goal} oefenexamens</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="fill-${item.key}" style="width:${pct}%"></div>
+        </div>
+        <div class="progress-btns">
+          <button class="prog-btn" onclick="changeProgress('${item.key}', 1, ${item.goal})">+ Gedaan</button>
+          <button class="prog-btn" onclick="changeProgress('${item.key}', -1, ${item.goal})">- Ongedaan</button>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function changeProgress(key, delta, goal) {
+  const prog = loadProgress();
+  const cur = prog[key] || 0;
+  prog[key] = Math.max(0, Math.min(goal, cur + delta));
+  saveProgress(prog);
+  renderProgress();
+}
+
+// ─── TIPS ───────────────────────────────────────────────────────────────────
+
+function renderTips() {
+  document.getElementById('tips-grid').innerHTML = TIPS.map(t => `
+    <div class="tip-card">
+      <div class="tip-icon">${t.icon}</div>
+      <div class="tip-text">${t.text}</div>
+    </div>
+  `).join('');
+}
+
+// ─── INIT ────────────────────────────────────────────────────────────────────
+
+renderHero();
+renderCards();
+renderWeeks();
+renderTabs();
+renderDayList();
+renderProgress();
+renderTips();
+</script>
+</body>
+</html>
