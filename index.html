@@ -941,20 +941,187 @@ const SUBJECTS_APPROACH = [
 ];
 
 const DAILY_TASKS = [
-  { date: 'do 9/4',  task: 'Start Nederlands: lees aanpaktips door, maak eerste oefentekst op tijd' },
-  { date: 'vr 10/4', task: 'Nederlands: analyseer antwoorden, werk aan dump-en-koppel techniek' },
-  { date: 'za 11/4', task: 'Duitsland theorie: tijdlijn 1918–1933 opschrijven en begrijpen' },
-  { date: 'zo 12/4', task: 'Duitsland theorie: tijdlijn 1933–1991, begrippen herhalen' },
-  { date: 'ma 13/4', task: 'Nederlands oefenexamen op tijd (90 min), foutanalyse daarna' },
-  { date: 'di 14/4', task: 'Duitsland: kernvraag democratie uitwerken in eigen woorden' },
-  { date: 'wo 15/4', task: 'Nederlands: focuspunten uit week 1 verwerken' },
-  { date: 'do 16/4', task: 'Nederlands volledig oefenexamen op tijd met stopwatch' },
-  { date: 'vr 17/4', task: 'Brits Rijk: kolonisatie + slavernij leren' },
-  { date: 'za 18/4', task: 'Brits Rijk: industriële revolutie + India (data + begrippen)' },
-  { date: 'zo 19/4', task: 'Economie: begrippen doorwerken, lijst maken' },
-  { date: 'ma 20/4', task: 'Nederlands oefenexamen + leestrategie oefenen' },
-  { date: 'di 21/4', task: 'Economie begrippen herhalen + eerste oefenvragen' },
-  { date: 'wo 22/4', task: 'Alles week 2 kort herhalen' },
+  // ── WEEK 0: 9–12 apr (school, 2 uur/dag) ──────────────────────────────────
+  { date: 'do 9/4',  task: 'Nederlands — lees de 6 zinsstructuren door en schrijf ze op een spiekbriefje' },
+  { date: 'do 9/4',  task: 'Nederlands — maak 1 oefentekst (kies een tekst uit oud examen), timer 20 min, beantwoord alle vragen' },
+
+  { date: 'vr 10/4', task: 'Nederlands — analyseer je fouten van gisteren: schrijf per fout op wat er mis was' },
+  { date: 'vr 10/4', task: 'Geschiedenis — schrijf tijdlijn Duitsland 1918–1945 op uit je hoofd, vul daarna aan' },
+
+  { date: 'za 11/4', task: 'Geschiedenis — tijdlijn Duitsland 1945–1991: BRD vs DDR, Berlijnse Muur, Hereniging' },
+  { date: 'za 11/4', task: 'Geschiedenis — beantwoord kernvraag: waarom mislukte democratie in Duitsland de eerste keer? (min. 5 punten)' },
+
+  { date: 'zo 12/4', task: 'Geschiedenis — schrijf 10 Duitsland-begrippen + definitie op uit hoofd, controleer daarna' },
+  { date: 'zo 12/4', task: 'Nederlands — maak 1 oefentekst op tijd (20 min), gebruik dump-en-koppel methode' },
+
+  // ── WEEK 1: 13–19 apr ──────────────────────────────────────────────────────
+  { date: 'ma 13/4', task: 'Nederlands — maak oefenexamen 2024 tijdvak 1 tekst 1, timer 20 min per tekst' },
+  { date: 'ma 13/4', task: 'Geschiedenis — Duitsland: herhaal 10 begrippen zonder aantekeningen (flashcard-stijl)' },
+
+  { date: 'di 14/4', task: 'Nederlands — herschrijf foute antwoorden van gisteren met de correcte zinsstructuur' },
+  { date: 'di 14/4', task: 'Geschiedenis — open vraag oefenen: leg uit hoe Hitler aan de macht kwam (dump-en-koppel)' },
+
+  { date: 'wo 15/4', task: '🎉 Examengala & afterparty — geen studeren, geniet ervan!' },
+
+  { date: 'do 16/4', task: 'Nederlands — oefenexamen 2023 tijdvak 1 volledig op tijd (90 min stopwatch)' },
+  { date: 'do 16/4', task: 'Nederlands — foutanalyse: categoriseer fouten (leestechniek / zinsstructuur / tijdsbeheer)' },
+  { date: 'do 16/4', task: 'Geschiedenis — Brits Rijk: leer kolonisatie Noord-Amerika + slavernij, schrijf tijdlijn op' },
+  { date: 'do 16/4', task: 'Geschiedenis — abolitionisme 1807/1833: leg in eigen woorden uit wat er veranderde en waarom' },
+
+  { date: 'vr 17/4', task: 'Nederlands — oefenexamen 2022 tijdvak 1 op tijd, focus: scan vragen vóór je de tekst leest' },
+  { date: 'vr 17/4', task: 'Geschiedenis — Brits Rijk: industriële revolutie, schrijf 5 oorzaken + 5 gevolgen op' },
+  { date: 'vr 17/4', task: 'Geschiedenis — India: 1765 kolonisatie, opstand 1857, INC 1885 — maak een overzichtsschema' },
+  { date: 'vr 17/4', task: 'Economie — maak begrippenlijst hoofdstuk 1: schrijf elk begrip + definitie op' },
+
+  { date: 'za 18/4', task: 'Nederlands — oefenexamen 2021 tijdvak 2 op tijd (90 min), noteer tijdsbesteding per tekst' },
+  { date: 'za 18/4', task: 'Geschiedenis — Brits Rijk herhaling: beantwoord 5 oefenvragen zonder aantekeningen' },
+  { date: 'za 18/4', task: 'Economie — begrippen hoofdstuk 2: definitie + voorbeeld per begrip opschrijven' },
+  { date: 'za 18/4', task: 'Economie — maak 10 meerkeuzevragen uit oud examen (alleen begrippendeel)' },
+
+  { date: 'zo 19/4', task: 'Nederlands — week 1 herhaling: herschrijf 3 foute antwoorden + maak 1 nieuwe tekst op tijd' },
+  { date: 'zo 19/4', task: 'Geschiedenis — Brits Rijk + Duitsland: 15 begrippen flashcard-stijl herhalen' },
+  { date: 'zo 19/4', task: 'Economie — herhaal begrippen hfd 1+2 zonder aantekeningen: schrijf definities op' },
+  { date: 'zo 19/4', task: 'Planningscheck — noteer per vak wat je nog niet zeker weet voor volgende week' },
+
+  // ── WEEK 2: 20–26 apr ──────────────────────────────────────────────────────
+  { date: 'ma 20/4', task: 'Nederlands — oefenexamen 2020 tijdvak 1 op tijd (90 min), hele-tekst vragen als laatste' },
+  { date: 'ma 20/4', task: 'Geschiedenis — Nederland 1948–2008: wederopbouw + Marshallhulp, schrijf tijdlijn op' },
+  { date: 'ma 20/4', task: 'Economie — begrippen hoofdstuk 3+4: schrijf definities + voorbeelden op' },
+  { date: 'ma 20/4', task: 'Economie — maak 10 meerkeuzevragen uit oud examen 2022' },
+
+  { date: 'di 21/4', task: 'Nederlands — foutanalyse 20/4: herschrijf alle foute antwoorden met juiste zinsstructuur' },
+  { date: 'di 21/4', task: 'Geschiedenis — Nederland: gasveld 1959, culturele revolutie jaren 60–70, emancipatie — beantwoord 5 open vragen' },
+  { date: 'di 21/4', task: 'Economie — herhaal begrippen hfd 1–4 zonder aantekeningen' },
+  { date: 'di 21/4', task: 'Economie — maak open vragendeel oud examen 2022, timer 20 min' },
+
+  { date: 'wo 22/4', task: 'Nederlands — oefenexamen 2019 tijdvak 1 op tijd (90 min)' },
+  { date: 'wo 22/4', task: 'Geschiedenis — Nederland herhaling: schrijf verzorgingsstaat + ontzuiling uit hoofd op' },
+  { date: 'wo 22/4', task: 'Economie — maak volledig oud examen 2023 op tijd (officiële examenduur)' },
+  { date: 'wo 22/4', task: 'Economie — foutanalyse: schrijf per fout op wat je verkeerd dacht' },
+
+  { date: 'do 23/4', task: 'Nederlands — zwakke punten: maak gerichte oefening voor jouw meest gemaakte fouttype' },
+  { date: 'do 23/4', task: 'Geschiedenis — alle 3 tijdvakken: 20 begrippen herhalen, schrijf definitie uit hoofd' },
+  { date: 'do 23/4', task: 'Economie — herhaal begrippen die je gisteren fout had, oefen die opnieuw' },
+  { date: 'do 23/4', task: 'Geschiedenis — maak 3 open vragen per tijdvak met dump-en-koppel methode' },
+
+  { date: 'vr 24/4', task: 'Nederlands — oefenexamen 2018 tijdvak 2 op tijd (90 min stopwatch)' },
+  { date: 'vr 24/4', task: 'Geschiedenis — Duitsland: maak 5 open vragen op tijd (totaal 20 min)' },
+  { date: 'vr 24/4', task: 'Economie — oud examen 2021 op tijd, daarna directe foutanalyse' },
+  { date: 'vr 24/4', task: 'Wiskunde A — opstarten: schrijf alle benodigde formules op een A4 vanuit de syllabus' },
+
+  { date: 'za 25/4', task: 'Nederlands — foutanalyse week 2: schrijf 3 concrete verbeterpunten op voor de komende weken' },
+  { date: 'za 25/4', task: 'Geschiedenis — Nederland: maak 5 open vragen op tijd, structuur "Factor → gevolg → uitleg"' },
+  { date: 'za 25/4', task: 'Economie — herhaling alle hoofdstukken: 20 begrippen zonder kijken opschrijven' },
+  { date: 'za 25/4', task: 'Wiskunde A — formules inoefenen: maak 5 basisopgaven per onderwerp (statistiek, verbanden, kansen)' },
+
+  { date: 'zo 26/4', task: 'Nederlands — week 2 herhaling: 1 tekst op tijd, focus op jouw zwakste vraagtype' },
+  { date: 'zo 26/4', task: 'Geschiedenis — alle 3 tijdvakken: 30 begrippen flashcard-stijl herhalen' },
+  { date: 'zo 26/4', task: 'Economie — week 2 herhaling: 15 begrippen + 10 meerkeuzevragen' },
+  { date: 'zo 26/4', task: 'Wiskunde A — grafieken en verbanden: maak 10 opgaven uit oud examen' },
+
+  // ── WEEK 3: 27 apr – 3 mei ────────────────────────────────────────────────
+  { date: 'ma 27/4', task: 'Nederlands — oefenexamen 2017 tijdvak 1 op tijd — dit is je laatste "nieuw" examen' },
+  { date: 'ma 27/4', task: 'Geschiedenis — Duitsland intensief: maak oud examen 2022 tijdvak 2 op tijd' },
+  { date: 'ma 27/4', task: 'Economie — oud examen 2020 op tijd + foutanalyse, extra focus op rekenvragen' },
+  { date: 'ma 27/4', task: 'Wiskunde A — kansen en statistiek: maak 10 opgaven uit oud examen' },
+
+  { date: 'di 28/4', task: 'Nederlands — laatste grote foutanalyse: schrijf definitief verbeterplan op (max 5 punten)' },
+  { date: 'di 28/4', task: 'Geschiedenis — Brits Rijk intensief: maak oud examen 2021 op tijd' },
+  { date: 'di 28/4', task: 'Economie — herhaal top 20 moeilijkste begrippen, schrijf ze nogmaals op zonder kijken' },
+  { date: 'di 28/4', task: 'Wiskunde A — verbanden en formules: 15 opgaven mix van alle onderwerpen' },
+
+  { date: 'wo 29/4', task: 'Nederlands — finaliseren: oefenexamen 2023 tijdvak 2 op tijd — streef naar maximale score' },
+  { date: 'wo 29/4', task: 'Geschiedenis — Nederland intensief: maak oud examen 2020 op tijd' },
+  { date: 'wo 29/4', task: 'Economie — oud examen 2019 op tijd, daarna foutanalyse' },
+  { date: 'wo 29/4', task: 'Wiskunde A — oud examen 2023 tijdvak 1 op tijd (officiële examenduur)' },
+
+  { date: 'do 30/4', task: 'Nederlands — herhaling: 1 tekst op tijd, focus op je allermoeilijkste vraagtype' },
+  { date: 'do 30/4', task: 'Geschiedenis — alle tijdvakken: schrijf per tijdvak 5 kernzinnen op die je altijd kunt gebruiken' },
+  { date: 'do 30/4', task: 'Economie — oud examen 2018 op tijd + foutanalyse' },
+  { date: 'do 30/4', task: 'Wiskunde A — foutanalyse gisteren + zwakke punten opnieuw oefenen' },
+
+  { date: 'vr 1/5',  task: 'Nederlands — herhaling: pak je slechtste oefenexamen tot nu, maak het opnieuw' },
+  { date: 'vr 1/5',  task: 'Geschiedenis — master-herhaling: 40 begrippen alle tijdvakken zonder aantekeningen' },
+  { date: 'vr 1/5',  task: 'Economie — zwakke punten aanpakken: maak alleen de vraagtypen die je steeds fout hebt' },
+  { date: 'vr 1/5',  task: 'Wiskunde A — oud examen 2022 tijdvak 2 op tijd' },
+
+  { date: 'za 2/5',  task: 'Nederlands — doe alsof het de echte dag is: rustige plek, timer, geen pauze (90 min)' },
+  { date: 'za 2/5',  task: 'Geschiedenis — simuleer het examen: oud examen 2023 op tijd onder echte omstandigheden' },
+  { date: 'za 2/5',  task: 'Economie — herhaling + laatste open vragen oefenen op tijd' },
+  { date: 'za 2/5',  task: 'Wiskunde A — herhaling: schrijf alle formules op uit hoofd, controleer daarna' },
+
+  { date: 'zo 3/5',  task: 'Nederlands — alleen herhaling: lees je 3 verbeterpunten door, maak 1 oefentekst' },
+  { date: 'zo 3/5',  task: 'Geschiedenis — alles herhalen: begrippen + 3 kernvragen per tijdvak beantwoorden' },
+  { date: 'zo 3/5',  task: 'Economie — alle begrippen herhalen, klaar voor de laatste rechte lijn richting examen' },
+  { date: 'zo 3/5',  task: 'Wiskunde A — herhaling: 10 gemengde opgaven oud examen' },
+
+  // ── WEEK 4: 4–10 mei ──────────────────────────────────────────────────────
+  { date: 'ma 4/5',  task: 'Nederlands — laatste simulatie-examen: 2022 tijdvak 2 op tijd, alsof het de echte dag is' },
+  { date: 'ma 4/5',  task: 'Economie — oud examen 2017 op tijd + foutanalyse' },
+  { date: 'ma 4/5',  task: 'Geschiedenis — herhaling begrippen: 20 per tijdvak opschrijven zonder aantekeningen' },
+
+  { date: 'di 5/5',  task: 'Nederlands — alleen herhaling: lees je eigen antwoorden van je beste oefenexamen terug' },
+  { date: 'di 5/5',  task: 'Economie — zwakke begrippen herhalen, maak 10 meerkeuzevragen' },
+  { date: 'di 5/5',  task: 'Geschiedenis — 3 open vragen oefenen per tijdvak (dump-en-koppel methode)' },
+
+  { date: 'wo 6/5',  task: 'Nederlands — laatste keer doorlopen: lees de 6 zinsstructuren + leestrategie door' },
+  { date: 'wo 6/5',  task: 'Economie — herhaling: maak alleen de vragen die je eerder fout had' },
+  { date: 'wo 6/5',  task: 'Geschiedenis — finaliseren: schrijf per tijdvak 3 "altijd-goed" antwoorden op' },
+
+  { date: 'do 7/5',  task: 'RUSTDAG — Nederlands: lees je spiekbriefje met zinsstructuren 1x door (max 15 min)' },
+  { date: 'do 7/5',  task: 'RUSTDAG — geen nieuw materiaal: eet goed, leg alles klaar voor morgen, vroeg naar bed' },
+
+  { date: 'vr 8/5',  task: 'EXAMEN NEDERLANDS — ontbijt rustig, vertrouw op je voorbereiding' },
+  { date: 'vr 8/5',  task: 'Na het examen — switch direct naar Economie: lees begrippenlijst door (max 1 uur, niet langer)' },
+
+  { date: 'za 9/5',  task: 'Economie — intensieve herhaling: alle begrippen + 20 meerkeuzevragen oud examen' },
+  { date: 'za 9/5',  task: 'Geschiedenis — herhaling begrippen alle tijdvakken: 30 begrippen flashcard-stijl' },
+
+  { date: 'zo 10/5', task: 'Economie — 1 oud examen op tijd (simulatie), daarna foutanalyse, daarna klaar' },
+  { date: 'zo 10/5', task: 'Geschiedenis — herhaling kernvragen: schrijf 3 per tijdvak uit hoofd op' },
+
+  // ── WEEK 5: 11–17 mei ──────────────────────────────────────────────────────
+  { date: 'ma 11/5', task: 'EXAMEN ECONOMIE — vlak voor het examen: alleen begrippenlijst doorkijken (15 min max)' },
+  { date: 'ma 11/5', task: 'Na het examen — switch direct naar Geschiedenis: lees kernvragen alle tijdvakken door' },
+
+  { date: 'di 12/5', task: 'EXAMEN GESCHIEDENIS — vlak voor het examen: tijdlijnen + kernbegrippen doorkijken' },
+  { date: 'di 12/5', task: 'Na het examen — switch direct naar Engels: lees de aanpaktips voor Engels door' },
+
+  { date: 'wo 13/5', task: 'Engels — leestrategie: maak 1 oefentekst op tijd (20 min timer per tekst)' },
+  { date: 'wo 13/5', task: 'Engels — woordenschat: maak 20 meerkeuzevragen oud examen 2023' },
+  { date: 'wo 13/5', task: 'Wiskunde A — herhaling formules: schrijf alle formules op uit hoofd, controleer daarna' },
+
+  { date: 'do 14/5', task: 'Engels — oefenexamen 2023 tijdvak 1 op tijd (officiële examenduur)' },
+  { date: 'do 14/5', task: 'Engels — foutanalyse: categoriseer fouten (leestechniek / woordkeuze / tijdsbeheer)' },
+  { date: 'do 14/5', task: 'Wiskunde A — oud examen 2023 tijdvak 1 op tijd' },
+
+  { date: 'vr 15/5', task: 'Engels — oefenexamen 2022 tijdvak 1 op tijd, focus: contextueel raden van onbekende woorden' },
+  { date: 'vr 15/5', task: 'Wiskunde A — foutanalyse gisteren + zwakke punten opnieuw oefenen' },
+  { date: 'vr 15/5', task: 'Bedrijfseconomie — opstarten: begrippen hoofdstuk 1+2 opschrijven + definitie' },
+
+  { date: 'za 16/5', task: 'Engels — oefenexamen 2021 tijdvak 2 op tijd' },
+  { date: 'za 16/5', task: 'Wiskunde A — oud examen 2022 tijdvak 2 op tijd' },
+  { date: 'za 16/5', task: 'Bedrijfseconomie — begrippen hoofdstuk 3+4 + eerste oefenvragen maken' },
+
+  { date: 'zo 17/5', task: 'Engels — foutanalyse week + 1 nieuwe oefentekst, focus op jouw zwakste vraagtype' },
+  { date: 'zo 17/5', task: 'Wiskunde A — herhaling alle formules + 10 gemengde opgaven' },
+  { date: 'zo 17/5', task: 'Bedrijfseconomie — maak 10 begripsvragen uit oud examen' },
+
+  // ── WEEK 6: 18–24 mei ──────────────────────────────────────────────────────
+  { date: 'ma 18/5', task: 'EXAMEN ENGELS — vlak voor het examen: leestrategie doorkijken (15 min max)' },
+  { date: 'ma 18/5', task: 'Na het examen — switch direct naar Wiskunde A: schrijf alle formules uit hoofd op kladpapier' },
+
+  { date: 'di 19/5', task: 'EXAMEN WISKUNDE A — dump ALLE formules op kladpapier vóórdat je de eerste vraag leest' },
+  { date: 'di 19/5', task: 'Na het examen — switch direct naar Bedrijfseconomie: lees begrippen door (1 uur max)' },
+
+  { date: 'wo 20/5', task: 'Bedrijfseconomie — intensief: oud examen 2023 op tijd + directe foutanalyse' },
+  { date: 'wo 20/5', task: 'Bedrijfseconomie — alle begrippen herhalen: schrijf top 20 moeilijkste nogmaals op' },
+
+  { date: 'do 21/5', task: 'Bedrijfseconomie — zwakke punten: maak alleen de vraagtypen die je eerder fout had' },
+  { date: 'do 21/5', task: 'Bedrijfseconomie — berekeningen oefenen: 10 rekenopgaven uit oud examen' },
+
+  { date: 'vr 22/5', task: 'EXAMEN BEDRIJFSECONOMIE — laatste examen, vertrouw op je voorbereiding!' },
+  { date: 'vr 22/5', task: 'KLAAR — alle examens voorbij! Geniet van de vrijheid.' },
 ];
 
 const PROGRESS_ITEMS = [
