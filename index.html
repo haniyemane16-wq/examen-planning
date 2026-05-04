@@ -784,6 +784,14 @@
       min-width: 110px;
     }
     .timer-btn-primary:hover { background: #4F46E5; border-color: #4F46E5; color: #fff; }
+    .timer-btn-test {
+      font-size: 11px;
+      padding: 6px 10px;
+      color: var(--text-muted);
+      border-color: var(--border);
+      opacity: 0.6;
+    }
+    .timer-btn-test:hover { opacity: 1; color: var(--text-secondary); }
 
     .timer-progress-section { margin-bottom: 20px; }
     .timer-progress-track {
@@ -917,6 +925,7 @@
         <button class="timer-btn timer-btn-primary" id="btn-start" onclick="timerStart()">Start</button>
         <button class="timer-btn" id="btn-reset" onclick="timerReset()">Reset</button>
         <button class="timer-btn" id="btn-skip" onclick="timerSkipBreak()" style="display:none">Sla pauze over</button>
+        <button class="timer-btn timer-btn-test" id="btn-test" onclick="timerTest()">Test 10s</button>
       </div>
 
       <div class="timer-progress-section">
@@ -1945,6 +1954,13 @@ function timerReset() {
   clearInterval(timerInterval); timerInterval = null;
   timerRunning  = false;
   timerSeconds  = timerMode === 'werk' ? TIMER_WERK_SECS : TIMER_PAUZE_SECS;
+  timerSave(); timerUpdateDisplay();
+}
+function timerTest() {
+  clearInterval(timerInterval); timerInterval = null;
+  timerSeconds = 10;
+  timerRunning = true;
+  timerInterval = setInterval(timerTick, 1000);
   timerSave(); timerUpdateDisplay();
 }
 function timerSkipBreak() {
