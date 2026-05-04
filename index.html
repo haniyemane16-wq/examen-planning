@@ -656,6 +656,211 @@
       .tab-buttons { gap: 4px; }
       .tab-btn { font-size: 12px; padding: 6px 10px; }
     }
+
+    /* ─── STUDIE TIMER ─── */
+    .timer-section { padding: 0 0 48px; }
+
+    .timer-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 28px 32px;
+      box-shadow: var(--shadow-md);
+    }
+
+    @keyframes timerFlashAnim {
+      0%   { background-color: var(--accent-light); }
+      100% { background-color: var(--surface); }
+    }
+    .timer-flash { animation: timerFlashAnim 1.2s ease-out; }
+
+    .timer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 20px;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .timer-info { flex: 1; min-width: 0; }
+    .timer-date {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .timer-block-current {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text-primary);
+      letter-spacing: -0.01em;
+      margin-bottom: 4px;
+    }
+    .timer-block-next { font-size: 13px; color: var(--text-secondary); }
+
+    .timer-clock {
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.04em;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+      line-height: 1;
+      align-self: center;
+    }
+
+    .timer-divider { height: 1px; background: var(--border); margin-bottom: 24px; }
+
+    .timer-countdown-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .timer-mode-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      padding: 4px 14px;
+      border-radius: 100px;
+    }
+    .timer-mode-badge::before {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+    }
+    .timer-mode-badge.werk  { background: #DCFCE7; color: #15803D; }
+    .timer-mode-badge.werk::before  { background: #15803D; animation: pulse 2s infinite; }
+    .timer-mode-badge.pauze { background: var(--accent-light); color: var(--accent); }
+    .timer-mode-badge.pauze::before { background: var(--accent); }
+
+    .timer-countdown {
+      font-size: clamp(72px, 18vw, 128px);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+      transition: color 0.3s ease;
+    }
+    .timer-countdown.werk  { color: #16A34A; }
+    .timer-countdown.pauze { color: var(--accent); }
+
+    .timer-controls {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+    .timer-btn {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 9px 22px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .timer-btn:hover {
+      border-color: var(--accent-mid);
+      color: var(--text-primary);
+      background: var(--accent-light);
+    }
+    .timer-btn-primary {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+      min-width: 110px;
+    }
+    .timer-btn-primary:hover { background: #4F46E5; border-color: #4F46E5; color: #fff; }
+
+    .timer-progress-section { margin-bottom: 20px; }
+    .timer-progress-track {
+      position: relative;
+      height: 36px;
+      margin-bottom: 6px;
+    }
+    .timer-progress-segments {
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--surface-2);
+    }
+    .timer-bar-seg {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-right: 1px solid rgba(255,255,255,0.55);
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+    .timer-bar-seg-label {
+      font-size: 10px;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding: 0 4px;
+      max-width: 100%;
+      pointer-events: none;
+    }
+    .timer-now-line {
+      position: absolute;
+      top: -4px;
+      bottom: -4px;
+      width: 2px;
+      background: var(--text-primary);
+      border-radius: 2px;
+      transform: translateX(-50%);
+      z-index: 5;
+      pointer-events: none;
+      display: none;
+    }
+    .timer-progress-axis {
+      position: relative;
+      height: 18px;
+      font-size: 10px;
+      color: var(--text-muted);
+      font-variant-numeric: tabular-nums;
+    }
+    .timer-progress-axis span {
+      position: absolute;
+      transform: translateX(-50%);
+      white-space: nowrap;
+    }
+
+    .timer-motivatie {
+      text-align: center;
+      font-size: 14px;
+      font-style: italic;
+      color: var(--text-secondary);
+      padding: 4px 0 0;
+    }
+
+    @media (max-width: 640px) {
+      .timer-card { padding: 20px 16px; }
+      .timer-clock { font-size: 26px; }
+      .timer-countdown { font-size: 64px; }
+      .timer-header { gap: 6px; }
+      .timer-block-current { font-size: 15px; }
+      .timer-progress-axis { display: none; }
+    }
   </style>
 </head>
 <body>
@@ -670,6 +875,7 @@
       <a href="#aanpak">Aanpak</a>
       <a href="#tracker">Tracker</a>
       <a href="#tips">Tips</a>
+      <a href="#timer">Timer</a>
     </div>
   </div>
 </nav>
@@ -683,6 +889,53 @@
     <div class="hero-label" id="hero-label">dagen te gaan</div>
     <div class="hero-divider"></div>
     <p class="hero-tagline">Rustig. Gestructureerd. Eén dag tegelijk — zo kom je er doorheen.</p>
+  </div>
+</section>
+
+<!-- STUDIE TIMER -->
+<section id="timer" class="timer-section">
+  <div class="container">
+    <div class="timer-card" id="timer-card">
+
+      <div class="timer-header">
+        <div class="timer-info">
+          <div class="timer-date" id="timer-date">—</div>
+          <div class="timer-block-current" id="timer-block-now">—</div>
+          <div class="timer-block-next" id="timer-block-next"></div>
+        </div>
+        <div class="timer-clock" id="timer-clock">--:--:--</div>
+      </div>
+
+      <div class="timer-divider"></div>
+
+      <div class="timer-countdown-section">
+        <div class="timer-mode-badge werk" id="timer-mode-badge">WERK</div>
+        <div class="timer-countdown werk" id="timer-countdown">90:00</div>
+      </div>
+
+      <div class="timer-controls">
+        <button class="timer-btn timer-btn-primary" id="btn-start" onclick="timerStart()">Start</button>
+        <button class="timer-btn" id="btn-reset" onclick="timerReset()">Reset</button>
+        <button class="timer-btn" id="btn-skip" onclick="timerSkipBreak()" style="display:none">Sla pauze over</button>
+      </div>
+
+      <div class="timer-progress-section">
+        <div class="timer-progress-track">
+          <div class="timer-progress-segments" id="timer-progress-segments"></div>
+          <div class="timer-now-line" id="timer-now-line"></div>
+        </div>
+        <div class="timer-progress-axis">
+          <span style="left:0;transform:none">08:00</span>
+          <span style="left:23.81%">10:30</span>
+          <span style="left:50%">13:15</span>
+          <span style="left:83.33%">16:45</span>
+          <span style="right:0;left:auto;transform:none">18:30</span>
+        </div>
+      </div>
+
+      <div class="timer-motivatie" id="timer-motivatie"></div>
+
+    </div>
   </div>
 </section>
 
@@ -1410,6 +1663,306 @@ function renderTips() {
   `).join('');
 }
 
+// ─── STUDIE TIMER ────────────────────────────────────────────────────────────
+
+const TIMER_DAG_SCHEMA = {
+  "2026-05-04": { blok1: "Nederlands",           blok2: "Geschiedenis",      blok3: "Nederlands",           blok4: "Geschiedenis" },
+  "2026-05-05": { blok1: "Nederlands",           blok2: "Geschiedenis",      blok3: "Nederlands",           blok4: "Geschiedenis" },
+  "2026-05-06": { blok1: "Nederlands",           blok2: "Geschiedenis",      blok3: "Nederlands",           blok4: "Geschiedenis" },
+  "2026-05-07": { blok1: "Nederlands",           blok2: "Geschiedenis",      blok3: "Nederlands",           blok4: "Geschiedenis" },
+  "2026-05-08": { blok1: "Examen Nederlands",    blok2: "Economie",          blok3: "Economie",             blok4: "Economie" },
+  "2026-05-09": { blok1: "Economie",             blok2: "Geschiedenis",      blok3: "Economie",             blok4: "Geschiedenis" },
+  "2026-05-10": { blok1: "Economie",             blok2: "Economie",          blok3: "Economie",             blok4: "Geschiedenis" },
+  "2026-05-11": { blok1: "Examen Economie",      blok2: "Geschiedenis",      blok3: "Geschiedenis",         blok4: "Geschiedenis" },
+  "2026-05-12": { blok1: "Examen Geschiedenis",  blok2: "Engels",            blok3: "Engels",               blok4: "Engels" },
+  "2026-05-13": { blok1: "Engels",               blok2: "Wiskunde A",        blok3: "Engels",               blok4: "Wiskunde A" },
+  "2026-05-14": { blok1: "Engels",               blok2: "Wiskunde A",        blok3: "Engels",               blok4: "Wiskunde A" },
+  "2026-05-15": { blok1: "Engels",               blok2: "Wiskunde A",        blok3: "Engels",               blok4: "Wiskunde A" },
+  "2026-05-16": { blok1: "Engels",               blok2: "Wiskunde A",        blok3: "Bedrijfseconomie",     blok4: "Wiskunde A" },
+  "2026-05-17": { blok1: "Engels",               blok2: "Wiskunde A",        blok3: "Bedrijfseconomie",     blok4: "Engels" },
+  "2026-05-18": { blok1: "Examen Engels",        blok2: "Wiskunde A",        blok3: "Wiskunde A",           blok4: "Wiskunde A" },
+  "2026-05-19": { blok1: "Examen Wiskunde A",    blok2: "Bedrijfseconomie",  blok3: "Bedrijfseconomie",     blok4: "Bedrijfseconomie" },
+  "2026-05-20": { blok1: "Bedrijfseconomie",     blok2: "Bedrijfseconomie",  blok3: "Bedrijfseconomie",     blok4: "Bedrijfseconomie" },
+  "2026-05-21": { blok1: "Bedrijfseconomie",     blok2: "Bedrijfseconomie",  blok3: "Bedrijfseconomie",     blok4: "Bedrijfseconomie" },
+  "2026-05-22": { blok1: "Examen Bedrijfseconomie", blok2: "Vrij",          blok3: "Vrij",                 blok4: "Vrij" },
+};
+
+const TIMER_VAK_BG = {
+  "Nederlands":                "#BFDBFE", "Economie":                  "#BBF7D0",
+  "Geschiedenis":              "#FDE68A", "Engels":                    "#FBCFE8",
+  "Wiskunde A":                "#DDD6FE", "Bedrijfseconomie":          "#6EE7B7",
+  "Examen Nederlands":         "#FECACA", "Examen Economie":           "#FECACA",
+  "Examen Geschiedenis":       "#FECACA", "Examen Engels":             "#FECACA",
+  "Examen Wiskunde A":         "#FECACA", "Examen Bedrijfseconomie":   "#FECACA",
+  "Pauze": "#E5E7EB", "Lunchpauze": "#E5E7EB", "Dagafsluiting": "#EDE9FE", "Vrij": "#F3F4F6",
+};
+const TIMER_VAK_FG = {
+  "Nederlands":                "#1E40AF", "Economie":                  "#166534",
+  "Geschiedenis":              "#92400E", "Engels":                    "#9D174D",
+  "Wiskunde A":                "#5B21B6", "Bedrijfseconomie":          "#065F46",
+  "Examen Nederlands":         "#991B1B", "Examen Economie":           "#991B1B",
+  "Examen Geschiedenis":       "#991B1B", "Examen Engels":             "#991B1B",
+  "Examen Wiskunde A":         "#991B1B", "Examen Bedrijfseconomie":   "#991B1B",
+  "Pauze": "#6B7280", "Lunchpauze": "#6B7280", "Dagafsluiting": "#6D28D9", "Vrij": "#9CA3AF",
+};
+
+// start/end in minutes from midnight
+const TIMER_BLOKKEN = [
+  { start: 480,  end: 630,  type: 'werk',       blok: 'blok1', label: 'Blok 1' },
+  { start: 630,  end: 645,  type: 'pauze',      blok: null,    label: 'Pauze' },
+  { start: 645,  end: 795,  type: 'werk',       blok: 'blok2', label: 'Blok 2' },
+  { start: 795,  end: 840,  type: 'lunch',      blok: null,    label: 'Lunchpauze' },
+  { start: 840,  end: 990,  type: 'werk',       blok: 'blok3', label: 'Blok 3' },
+  { start: 990,  end: 1005, type: 'pauze',      blok: null,    label: 'Pauze' },
+  { start: 1005, end: 1095, type: 'werk',       blok: 'blok4', label: 'Blok 4' },
+  { start: 1095, end: 1110, type: 'afsluiting', blok: null,    label: 'Dagafsluiting' },
+];
+
+const TIMER_MOTIVATIE_LIJST = [
+  { start: 480,  end: 630,  text: "Eerste blok. Zet je telefoon weg." },
+  { start: 630,  end: 645,  text: "Pauze verdiend. Geen socials — loop even." },
+  { start: 645,  end: 795,  text: "Tweede blok. Ga ervoor." },
+  { start: 795,  end: 840,  text: "Eet iets goeds. Geen schermen." },
+  { start: 840,  end: 990,  text: "Derde blok. Dit is waar het verschil gemaakt wordt." },
+  { start: 990,  end: 1005, text: "Bijna klaar voor vandaag." },
+  { start: 1005, end: 1095, text: "Laatste blok. Eindsprint." },
+  { start: 1095, end: 1440, text: "Dag klaar. Herhaal je flashcards en ga dan weg van je bureau." },
+];
+
+const TIMER_WERK_SECS  = 90 * 60;
+const TIMER_PAUZE_SECS = 15 * 60;
+
+let timerInterval = null;
+let timerMode     = 'werk';
+let timerSeconds  = TIMER_WERK_SECS;
+let timerRunning  = false;
+
+function timerTodayStr() {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
+function timerNowMins() {
+  const d = new Date();
+  return d.getHours() * 60 + d.getMinutes();
+}
+function timerFmtMins(m) {
+  return `${String(Math.floor(m/60)).padStart(2,'0')}:${String(m%60).padStart(2,'0')}`;
+}
+function timerFmtSecs(s) {
+  return `${String(Math.floor(s/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`;
+}
+function timerBlokLabel(blok, vakken) {
+  if (blok.type === 'werk' && vakken && vakken[blok.blok]) return vakken[blok.blok];
+  return blok.label;
+}
+function timerGetCurrentInfo() {
+  const mins   = timerNowMins();
+  const vakken = TIMER_DAG_SCHEMA[timerTodayStr()] || null;
+  for (let i = 0; i < TIMER_BLOKKEN.length; i++) {
+    const b = TIMER_BLOKKEN[i];
+    if (mins >= b.start && mins < b.end) {
+      const label     = timerBlokLabel(b, vakken);
+      let nextLabel   = null, nextTime = null;
+      if (i + 1 < TIMER_BLOKKEN.length) {
+        const nb  = TIMER_BLOKKEN[i + 1];
+        nextLabel = timerBlokLabel(nb, vakken);
+        nextTime  = timerFmtMins(nb.start);
+      }
+      return { label, type: b.type, nextLabel, nextTime };
+    }
+  }
+  if (mins < TIMER_BLOKKEN[0].start) return { label: 'Studietijd begint om 08:00', type: 'voor', nextLabel: null, nextTime: null };
+  return { label: 'Goed gedaan — dag voorbij!', type: 'na', nextLabel: null, nextTime: null };
+}
+function timerGetMotivatie() {
+  const mins = timerNowMins();
+  for (const m of TIMER_MOTIVATIE_LIJST) {
+    if (mins >= m.start && mins < m.end) return m.text;
+  }
+  return mins < 480 ? 'Goedemorgen — studietijd begint om 08:00.' : 'Geweldig gedaan vandaag!';
+}
+
+function timerSave() {
+  try {
+    localStorage.setItem('studie_timer', JSON.stringify({
+      mode: timerMode, secondsLeft: timerSeconds, isRunning: timerRunning,
+      startedAt: timerRunning ? Date.now() : null,
+      startSeconds: timerRunning ? timerSeconds : null,
+    }));
+  } catch(e) {}
+}
+function timerLoad() {
+  try {
+    const raw = localStorage.getItem('studie_timer');
+    if (!raw) return;
+    const s = JSON.parse(raw);
+    timerMode    = s.mode === 'pauze' ? 'pauze' : 'werk';
+    timerSeconds = (s.secondsLeft > 0) ? s.secondsLeft : (timerMode === 'werk' ? TIMER_WERK_SECS : TIMER_PAUZE_SECS);
+    if (s.isRunning && s.startedAt && s.startSeconds > 0) {
+      const elapsed   = Math.floor((Date.now() - s.startedAt) / 1000);
+      const remaining = s.startSeconds - elapsed;
+      if (remaining > 0) {
+        timerSeconds = remaining;
+        timerRunning = true;
+      } else {
+        timerMode    = timerMode === 'werk' ? 'pauze' : 'werk';
+        timerSeconds = timerMode === 'werk' ? TIMER_WERK_SECS : TIMER_PAUZE_SECS;
+        timerRunning = false;
+      }
+    }
+  } catch(e) {}
+}
+
+function timerUpdateDisplay() {
+  const cdEl     = document.getElementById('timer-countdown');
+  const badgeEl  = document.getElementById('timer-mode-badge');
+  const btnStart = document.getElementById('btn-start');
+  const btnSkip  = document.getElementById('btn-skip');
+  if (!cdEl) return;
+  cdEl.textContent      = timerFmtSecs(timerSeconds);
+  cdEl.className        = `timer-countdown ${timerMode}`;
+  badgeEl.textContent   = timerMode === 'werk' ? 'WERK' : 'PAUZE';
+  badgeEl.className     = `timer-mode-badge ${timerMode}`;
+  btnStart.textContent  = timerRunning ? 'Pauzeer' : 'Start';
+  btnSkip.style.display = timerMode === 'pauze' ? 'inline-block' : 'none';
+}
+
+function timerUpdateClock() {
+  const now      = new Date();
+  const clockEl  = document.getElementById('timer-clock');
+  const dateEl   = document.getElementById('timer-date');
+  const nowEl    = document.getElementById('timer-block-now');
+  const nextEl   = document.getElementById('timer-block-next');
+  const motivEl  = document.getElementById('timer-motivatie');
+  const lineEl   = document.getElementById('timer-now-line');
+  if (!clockEl) return;
+
+  const hh = String(now.getHours()).padStart(2,'0');
+  const mm = String(now.getMinutes()).padStart(2,'0');
+  const ss = String(now.getSeconds()).padStart(2,'0');
+  clockEl.textContent = `${hh}:${mm}:${ss}`;
+
+  const DAGEN   = ['Zondag','Maandag','Dinsdag','Woensdag','Donderdag','Vrijdag','Zaterdag'];
+  const MAANDEN = ['januari','februari','maart','april','mei','juni','juli','augustus','september','oktober','november','december'];
+  dateEl.textContent = `${DAGEN[now.getDay()]} ${now.getDate()} ${MAANDEN[now.getMonth()]}`;
+
+  const info = timerGetCurrentInfo();
+  nowEl.textContent = `Nu: ${info.label}`;
+  if (info.nextLabel) {
+    nextEl.textContent    = `Straks om ${info.nextTime}: ${info.nextLabel}`;
+    nextEl.style.display  = '';
+  } else {
+    nextEl.style.display  = 'none';
+  }
+  if (motivEl) motivEl.textContent = timerGetMotivatie();
+
+  if (lineEl) {
+    const mins = now.getHours() * 60 + now.getMinutes();
+    const DAY_START = 480, DAY_END = 1110;
+    if (mins >= DAY_START && mins <= DAY_END) {
+      lineEl.style.left    = `${((mins - DAY_START) / (DAY_END - DAY_START) * 100).toFixed(2)}%`;
+      lineEl.style.display = 'block';
+    } else {
+      lineEl.style.display = 'none';
+    }
+  }
+}
+
+function timerRenderBar() {
+  const segEl = document.getElementById('timer-progress-segments');
+  if (!segEl) return;
+  const DAY_START = 480, DAY_DUR = 630;
+  const vakken = TIMER_DAG_SCHEMA[timerTodayStr()] || null;
+  segEl.innerHTML = TIMER_BLOKKEN.map(b => {
+    const left  = ((b.start - DAY_START) / DAY_DUR * 100).toFixed(2);
+    const width = ((b.end - b.start)     / DAY_DUR * 100).toFixed(2);
+    const label = timerBlokLabel(b, vakken);
+    const bg    = TIMER_VAK_BG[label] || '#E5E7EB';
+    const fg    = TIMER_VAK_FG[label] || '#6B7280';
+    return `<div class="timer-bar-seg" style="left:${left}%;width:${width}%;background:${bg}" title="${label}">${
+      parseFloat(width) > 6 ? `<span class="timer-bar-seg-label" style="color:${fg}">${label}</span>` : ''
+    }</div>`;
+  }).join('');
+}
+
+function timerBeep() {
+  try {
+    const Ctx = window.AudioContext || window.webkitAudioContext;
+    if (!Ctx) return;
+    const ctx = new Ctx();
+    [[880, 0, 0.45], [1100, 0.55, 0.45]].forEach(([freq, delay, dur]) => {
+      const osc = ctx.createOscillator(), gain = ctx.createGain();
+      osc.connect(gain); gain.connect(ctx.destination);
+      osc.frequency.value = freq; osc.type = 'sine';
+      gain.gain.setValueAtTime(0, ctx.currentTime + delay);
+      gain.gain.linearRampToValueAtTime(0.3, ctx.currentTime + delay + 0.02);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + delay + dur);
+      osc.start(ctx.currentTime + delay);
+      osc.stop(ctx.currentTime + delay + dur + 0.05);
+    });
+  } catch(e) {}
+}
+function timerNotify(msg) {
+  try {
+    if (typeof Notification !== 'undefined' && Notification.permission === 'granted') {
+      new Notification('Studie Timer', { body: msg });
+    }
+  } catch(e) {}
+}
+function timerFlash() {
+  const card = document.getElementById('timer-card');
+  if (card) { card.classList.add('timer-flash'); setTimeout(() => card.classList.remove('timer-flash'), 1200); }
+}
+
+function timerStart() {
+  if (timerRunning) {
+    clearInterval(timerInterval); timerInterval = null; timerRunning = false;
+  } else {
+    if (typeof Notification !== 'undefined' && Notification.permission === 'default') Notification.requestPermission();
+    timerRunning  = true;
+    timerInterval = setInterval(timerTick, 1000);
+  }
+  timerSave(); timerUpdateDisplay();
+}
+function timerTick() {
+  if (timerSeconds <= 0) { timerOnComplete(); return; }
+  timerSeconds--;
+  if (timerSeconds % 30 === 0) timerSave();
+  timerUpdateDisplay();
+}
+function timerOnComplete() {
+  clearInterval(timerInterval); timerInterval = null;
+  const wasWerk = timerMode === 'werk';
+  timerMode    = wasWerk ? 'pauze' : 'werk';
+  timerSeconds = timerMode === 'werk' ? TIMER_WERK_SECS : TIMER_PAUZE_SECS;
+  timerBeep(); timerFlash();
+  timerNotify(wasWerk ? 'Pauze! 15 minuten rust.' : 'Tijd om te werken! Nieuw blok begint.');
+  timerRunning  = true;
+  timerInterval = setInterval(timerTick, 1000);
+  timerSave(); timerUpdateDisplay();
+}
+function timerReset() {
+  clearInterval(timerInterval); timerInterval = null;
+  timerRunning  = false;
+  timerSeconds  = timerMode === 'werk' ? TIMER_WERK_SECS : TIMER_PAUZE_SECS;
+  timerSave(); timerUpdateDisplay();
+}
+function timerSkipBreak() {
+  if (timerMode !== 'pauze') return;
+  clearInterval(timerInterval); timerInterval = null;
+  timerRunning = false; timerMode = 'werk'; timerSeconds = TIMER_WERK_SECS;
+  timerSave(); timerUpdateDisplay();
+}
+
+function initTimer() {
+  timerLoad();
+  timerRenderBar();
+  timerUpdateDisplay();
+  timerUpdateClock();
+  setInterval(timerUpdateClock, 1000);
+  if (timerRunning) timerInterval = setInterval(timerTick, 1000);
+}
+
 // ─── INIT ────────────────────────────────────────────────────────────────────
 
 renderHero();
@@ -1419,6 +1972,7 @@ renderTabs();
 renderDayList();
 renderProgress();
 renderTips();
+initTimer();
 </script>
 </body>
 </html>
