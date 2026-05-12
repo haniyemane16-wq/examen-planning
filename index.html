@@ -869,6 +869,340 @@
       .timer-block-current { font-size: 15px; }
       .timer-progress-axis { display: none; }
     }
+
+    /* ─── FLASHCARDS ─── */
+    #flashcards, #quiz { padding: 64px 0; }
+
+    .begrip-filters {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+    .begrip-filter {
+      padding: 5px 16px;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      background: transparent;
+      color: var(--text-secondary);
+      transition: all 0.15s;
+      font-family: inherit;
+    }
+    .begrip-filter.active {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+
+    .fc-area {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    .fc-counter {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+    .fc-card-wrap {
+      width: 100%;
+      max-width: 560px;
+      perspective: 1200px;
+      cursor: pointer;
+    }
+    .fc-card {
+      width: 100%;
+      min-height: 220px;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.5s ease;
+      border-radius: var(--radius-lg);
+    }
+    .fc-card.flipped { transform: rotateY(180deg); }
+    .fc-front, .fc-back {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      border-radius: var(--radius-lg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 28px;
+      text-align: center;
+      box-shadow: var(--shadow-md);
+    }
+    .fc-front {
+      background: var(--surface);
+      border: 1px solid var(--border);
+    }
+    .fc-back {
+      background: var(--accent);
+      border: 1px solid var(--accent);
+      transform: rotateY(180deg);
+      color: #fff;
+    }
+    .fc-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      opacity: 0.5;
+    }
+    .fc-term {
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+    }
+    .fc-back .fc-label { color: rgba(255,255,255,0.7); }
+    .fc-def {
+      font-size: 15px;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.95);
+      margin-bottom: 12px;
+    }
+    .fc-hint {
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: rgba(255,255,255,0.15);
+      padding: 4px 12px;
+      border-radius: 100px;
+    }
+    .fc-tap-hint {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: -8px;
+    }
+    .fc-controls {
+      display: flex;
+      gap: 10px;
+    }
+    .fc-btn {
+      padding: 10px 24px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text-primary);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.15s;
+    }
+    .fc-btn:hover { background: var(--surface-2); }
+    .fc-btn.primary {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+    .fc-btn.primary:hover { opacity: 0.9; }
+    .fc-progress-bar {
+      width: 100%;
+      max-width: 560px;
+      height: 4px;
+      background: var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .fc-progress-fill {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 2px;
+      transition: width 0.3s ease;
+    }
+    .fc-known-wrap {
+      display: flex;
+      gap: 10px;
+    }
+    .fc-btn-known {
+      flex: 1;
+      padding: 10px;
+      border-radius: var(--radius-sm);
+      border: 1px solid;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.15s;
+    }
+    .fc-btn-known.yes {
+      background: #F0FDF4;
+      border-color: #BBF7D0;
+      color: #166534;
+    }
+    .fc-btn-known.yes:hover { background: #DCFCE7; }
+    .fc-btn-known.no {
+      background: #FEF2F2;
+      border-color: #FECACA;
+      color: #991B1B;
+    }
+    .fc-btn-known.no:hover { background: #FEE2E2; }
+    .fc-result {
+      text-align: center;
+      padding: 32px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      width: 100%;
+      max-width: 560px;
+    }
+    .fc-result-score {
+      font-size: 52px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: -0.03em;
+    }
+    .fc-result-label {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+    }
+
+    /* ─── QUIZ ─── */
+    .quiz-wrap {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .quiz-score-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+    .quiz-score-pills {
+      display: flex;
+      gap: 8px;
+    }
+    .quiz-pill {
+      padding: 3px 12px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .quiz-pill.correct { background: #F0FDF4; color: #166534; }
+    .quiz-pill.wrong { background: #FEF2F2; color: #991B1B; }
+    .quiz-question-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 16px;
+    }
+    .quiz-q-type {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .quiz-q-text {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      line-height: 1.4;
+      color: var(--text-primary);
+    }
+    .quiz-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .quiz-option {
+      padding: 14px 16px;
+      border-radius: var(--radius-md);
+      border: 1.5px solid var(--border);
+      background: var(--surface);
+      font-size: 13px;
+      line-height: 1.4;
+      cursor: pointer;
+      font-family: inherit;
+      color: var(--text-primary);
+      transition: all 0.15s;
+      text-align: left;
+    }
+    .quiz-option:hover:not(:disabled) { border-color: var(--accent); background: var(--accent-light); }
+    .quiz-option.correct { background: #F0FDF4; border-color: #4ADE80; color: #166534; font-weight: 500; }
+    .quiz-option.wrong { background: #FEF2F2; border-color: #F87171; color: #991B1B; }
+    .quiz-option:disabled { cursor: default; }
+    .quiz-feedback {
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .quiz-feedback-text {
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .quiz-feedback-text.ok { color: #166534; }
+    .quiz-feedback-text.nope { color: #991B1B; }
+    .quiz-next-btn {
+      padding: 10px 24px;
+      border-radius: var(--radius-sm);
+      border: none;
+      background: var(--accent);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: inherit;
+      white-space: nowrap;
+      transition: opacity 0.15s;
+      display: none;
+    }
+    .quiz-next-btn:hover { opacity: 0.9; }
+    .quiz-progress-bar {
+      width: 100%;
+      height: 4px;
+      background: var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .quiz-progress-fill {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 2px;
+      transition: width 0.4s ease;
+    }
+    .quiz-done {
+      text-align: center;
+      padding: 40px 32px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+    }
+    .quiz-done-emoji { font-size: 48px; margin-bottom: 12px; }
+    .quiz-done-score {
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .quiz-done-label { font-size: 15px; color: var(--text-secondary); margin-bottom: 24px; }
+    @media (max-width: 560px) {
+      .quiz-options { grid-template-columns: 1fr; }
+      .fc-known-wrap { flex-direction: column; }
+    }
   </style>
 </head>
 <body>
@@ -884,6 +1218,8 @@
       <a href="#tracker">Tracker</a>
       <a href="#tips">Tips</a>
       <a href="#timer">Timer</a>
+      <a href="#flashcards">Flashcards</a>
+      <a href="#quiz">Quiz</a>
     </div>
   </div>
 </nav>
@@ -1002,6 +1338,36 @@
     <h2 class="section-title">Examentips</h2>
     <p class="section-subtitle">Vijf principes om bij te houden tijdens elke toets.</p>
     <div class="tips-grid" id="tips-grid"></div>
+  </div>
+</section>
+
+<!-- FLASHCARDS -->
+<section id="flashcards">
+  <div class="container">
+    <h2 class="section-title">Flashcards — Geschiedenis</h2>
+    <p class="section-subtitle">Klik op een kaart om de definitie te zien. Markeer of je het wist of niet.</p>
+    <div class="begrip-filters" id="fc-filters">
+      <button class="begrip-filter active" onclick="fcSetFilter('all',this)">Alle</button>
+      <button class="begrip-filter" onclick="fcSetFilter('br',this)">Het Britse Rijk</button>
+      <button class="begrip-filter" onclick="fcSetFilter('de',this)">Duitsland</button>
+      <button class="begrip-filter" onclick="fcSetFilter('nl',this)">Nederland</button>
+    </div>
+    <div class="fc-area" id="fc-area"></div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section id="quiz">
+  <div class="container">
+    <h2 class="section-title">Quiz — Interactief oefenen</h2>
+    <p class="section-subtitle">Kies de juiste definitie of term. 10 vragen per ronde, willekeurig geselecteerd.</p>
+    <div class="begrip-filters" id="quiz-filters">
+      <button class="begrip-filter active" onclick="quizSetFilter('all',this)">Alle</button>
+      <button class="begrip-filter" onclick="quizSetFilter('br',this)">Het Britse Rijk</button>
+      <button class="begrip-filter" onclick="quizSetFilter('de',this)">Duitsland</button>
+      <button class="begrip-filter" onclick="quizSetFilter('nl',this)">Nederland</button>
+    </div>
+    <div class="quiz-wrap" id="quiz-wrap"></div>
   </div>
 </section>
 
@@ -1989,6 +2355,468 @@ renderDayList();
 renderProgress();
 renderTips();
 initTimer();
+
+// ─── BEGRIPPEN DATA (249 begrippen) ─────────────────────────────────────────
+const BEGRIPPEN = [
+  // ── Brits Rijk ──
+  {c:"br",s:"1. De Industriële Revolutie",t:"Industriële revolutie",d:"De overgang van handwerk naar machinale productie in fabrieken, vooral in Engeland (1760–1840).",k:"fabrieken & machines"},
+  {c:"br",s:"1. De Industriële Revolutie",t:"Stoommachine",d:"Een motor die stoom omzet in beweging; de motor achter de industrialisatie. Uitgevonden door James Watt.",k:"kracht van stoom"},
+  {c:"br",s:"1. De Industriële Revolutie",t:"Huisnijverheid",d:"Thuis werken aan productie (zoals weven) voor een opdrachtgever, vóór de fabriekstijd.",k:"thuiswerk vóór fabrieken"},
+  {c:"br",s:"1. De Industriële Revolutie",t:"Spinning Jenny",d:"Een spinmachine die meerdere draden tegelijk kon spinnen; symbool van de textielrevolutie.",k:"sneller spinnen"},
+  {c:"br",s:"1. De Industriële Revolutie",t:"Katoen",d:"De belangrijkste grondstof van de Britse textielindustrie; geïmporteerd uit kolonies.",k:"grondstof industrie"},
+  {c:"br",s:"1. De Industriële Revolutie",t:"Transport",d:"Kanalen, spoorwegen en wegen maakten snelle goederenverplaatsing mogelijk.",k:"goederen verplaatsen"},
+  {c:"br",s:"1. De Industriële Revolutie",t:"Verstedelijking (urbanisatie)",d:"Mensen trokken van het platteland naar de stad voor fabriekswerk; steden groeiden enorm.",k:"platteland → stad"},
+  {c:"br",s:"1. De Industriële Revolutie",t:"Fabrieksarbeid",d:"Werk in grote fabrieken, vaak onder slechte omstandigheden: lange dagen, laag loon, kinderarbeid.",k:"hard werken, weinig rechten"},
+  {c:"br",s:"1. De Industriële Revolutie",t:"Sociale kwestie",d:"De armoede en slechte leefomstandigheden van arbeiders als maatschappelijk probleem.",k:"armoede als probleem"},
+  {c:"br",s:"2. Een liberale samenleving",t:"Liberalisme",d:"Politieke stroming die vrijheid van het individu en een vrije markt centraal stelt, weinig overheidsbemoeienis.",k:"vrijheid & vrije markt"},
+  {c:"br",s:"2. Een liberale samenleving",t:"Liberale markteconomie",d:"Economisch systeem waarbij vraag en aanbod de prijzen bepalen, zonder overheidscontrole.",k:"markt bepaalt prijs"},
+  {c:"br",s:"2. Een liberale samenleving",t:"Socialisme",d:"Politieke stroming die gelijkheid en collectief bezit van productiemiddelen nastreeft.",k:"gelijkheid & gemeenschap"},
+  {c:"br",s:"2. Een liberale samenleving",t:"Communisme",d:"Radicale vorm van socialisme: geen privébezit, alles gemeenschappelijk, klassenloze maatschappij.",k:"geen privébezit"},
+  {c:"br",s:"2. Een liberale samenleving",t:"Karl Marx",d:"Duits filosoof en grondlegger van het communisme; schreef het Communistisch Manifest.",k:"vader communisme"},
+  {c:"br",s:"2. Een liberale samenleving",t:"Confessionalisme",d:"Politieke stroming gebaseerd op religieuze (christelijke) waarden.",k:"politiek & religie"},
+  {c:"br",s:"2. Een liberale samenleving",t:"Conservatisme",d:"Politieke stroming die traditie en bestaande orde wil bewaren, tegen snelle verandering.",k:"traditie bewaren"},
+  {c:"br",s:"2. Een liberale samenleving",t:"Vakbond",d:"Organisatie van arbeiders die samen betere lonen en arbeidsomstandigheden afdwingen.",k:"arbeiders samen sterk"},
+  {c:"br",s:"2. Een liberale samenleving",t:"Factory Acts",d:"Britse wetten die de werkomstandigheden in fabrieken verbeterden, zoals minder uren voor kinderen.",k:"regelgeving arbeiders"},
+  {c:"br",s:"2. Een liberale samenleving",t:"Robert Owen",d:"Britse fabrikant die betere arbeidsomstandigheden invoerde en een vroege socialist was.",k:"vooruitstrevende werkgever"},
+  {c:"br",s:"3. De werkplaats van de wereld",t:"Werkplaats van de wereld",d:"Bijnaam voor Groot-Brittannië als 's werelds grootste industriële producent in de 19e eeuw.",k:"GB = industrie-kampioen"},
+  {c:"br",s:"3. De werkplaats van de wereld",t:"Industrieel kapitalisme",d:"Economisch systeem waarbij fabrieksproductie en privébezit van bedrijven centraal staan.",k:"privébedrijven, winst"},
+  {c:"br",s:"3. De werkplaats van de wereld",t:"Wereldeconomie",d:"Het netwerk van internationale handel en economische betrekkingen tussen landen.",k:"landen handelen samen"},
+  {c:"br",s:"3. De werkplaats van de wereld",t:"Handelskapitalisme",d:"Vroege vorm van kapitalisme waarbij rijkdom werd opgebouwd via internationale handel.",k:"winst via handel"},
+  {c:"br",s:"3. De werkplaats van de wereld",t:"Afzetmarkt",d:"Een gebied of land waar producten verkocht kunnen worden.",k:"markt voor producten"},
+  {c:"br",s:"3. De werkplaats van de wereld",t:"Afzetgebied",d:"Een regio die als markt dient voor de producten van een ander land of bedrijf.",k:"verkoopgebied"},
+  {c:"br",s:"3. De werkplaats van de wereld",t:"Grondstoffen",d:"Ruwe materialen (katoen, kolen, hout) die nodig zijn voor de industrie.",k:"ruwe materialen"},
+  {c:"br",s:"3. De werkplaats van de wereld",t:"Handelsgewassen",d:"Gewassen die geteeld worden voor de export (suiker, katoen, tabak), niet voor eigen voeding.",k:"gewassen voor verkoop"},
+  {c:"br",s:"3. De werkplaats van de wereld",t:"Wereldtentoonstelling",d:"Internationale expo om industriële vooruitgang te etaleren; de eerste was Londen 1851.",k:"trots op industrie"},
+  {c:"br",s:"4. Dertien Britse koloniën",t:"Ontdekkingsreizen",d:"Europese zeereizen (15e–17e eeuw) waarmee nieuwe continenten werden ontdekt en in kaart gebracht.",k:"nieuwe wereld zoeken"},
+  {c:"br",s:"4. Dertien Britse koloniën",t:"Kolonisatie",d:"Het vestigen van nederzettingen en gezag in vreemde gebieden.",k:"land inpikken"},
+  {c:"br",s:"4. Dertien Britse koloniën",t:"Expansie",d:"Uitbreiding van grondgebied, macht of invloed door een staat of rijk.",k:"groei & macht"},
+  {c:"br",s:"4. Dertien Britse koloniën",t:"Columbus",d:"Spaanse ontdekkingsreiziger die in 1492 Amerika bereikte, op zoek naar een route naar Azië.",k:"ontdekte Amerika"},
+  {c:"br",s:"4. Dertien Britse koloniën",t:"Pilgrim Fathers",d:"Engelse puriteinen die in 1620 naar Amerika vluchtten op de Mayflower voor religieuze vrijheid.",k:"eerste kolonisten Amerika"},
+  {c:"br",s:"4. Dertien Britse koloniën",t:"Kolonisten",d:"Europeanen die zich vestigden in nieuwe gebieden buiten Europa.",k:"Europeanen elders"},
+  {c:"br",s:"4. Dertien Britse koloniën",t:"Inheemse bevolking",d:"De oorspronkelijke bewoners van een land vóór de Europese kolonisatie.",k:"originele bewoners"},
+  {c:"br",s:"4. Dertien Britse koloniën",t:"Vestigingskoloniën",d:"Koloniën waar Europeanen permanent gingen wonen en de inheemse bevolking verdrong.",k:"Europeanen gaan wonen"},
+  {c:"br",s:"4. Dertien Britse koloniën",t:"Dertien koloniën",d:"De dertien Britse nederzettingen aan de oostkust van Noord-Amerika die later de VS werden.",k:"basis van Amerika"},
+  {c:"br",s:"4. Dertien Britse koloniën",t:"Verlichte ideeën",d:"Filosofische denkbeelden (Verlichting) over vrijheid, gelijkheid en volkssoevereiniteit.",k:"vrijheid & rede"},
+  {c:"br",s:"5. Plantagekoloniën en slavernij",t:"Plantage",d:"Groot landbouwbedrijf in de tropen, gedreven door slaafgemaakten, voor exportgewassen.",k:"groot boerenbedrijf"},
+  {c:"br",s:"5. Plantagekoloniën en slavernij",t:"Plantagekoloniën",d:"Koloniën waarvan de economie draaide op plantages met slaafgemaakte arbeiders.",k:"slaveneconomie"},
+  {c:"br",s:"5. Plantagekoloniën en slavernij",t:"Plantage-economieën",d:"Economische systemen gebaseerd op grootschalige plantageproductie met dwangarbeid.",k:"export via dwangarbeid"},
+  {c:"br",s:"5. Plantagekoloniën en slavernij",t:"Barbados en Jamaica",d:"Britse Caribische eilanden met grote suikerplantages, gedreven door slavernij.",k:"suikereilanden"},
+  {c:"br",s:"5. Plantagekoloniën en slavernij",t:"Slaafgemaakten",d:"Mensen die door geweld en handel tot bezit van anderen waren gemaakt en gedwongen werkten.",k:"mensen als eigendom"},
+  {c:"br",s:"5. Plantagekoloniën en slavernij",t:"Driekhoekshandel",d:"Handelsroute tussen Europa, Afrika en Amerika: goederen → slaven → suiker/katoen.",k:"drie continenten, één circuit"},
+  {c:"br",s:"5. Plantagekoloniën en slavernij",t:"Trans-Atlantische slavenhandel",d:"De massale deportatie van Afrikanen als slaven naar Amerika (ca. 12 miljoen mensen).",k:"grootste deportatie ooit"},
+  {c:"br",s:"5. Plantagekoloniën en slavernij",t:"Royal African Company",d:"Brits handelsbedrijf dat het monopolie had op de slavenhandel in West-Afrika.",k:"slavenhandelmonopolie"},
+  {c:"br",s:"5. Plantagekoloniën en slavernij",t:"Slavernij",d:"Het systeem waarbij mensen worden behandeld als eigendom en gedwongen worden te werken.",k:"mensen als bezit"},
+  {c:"br",s:"5. Plantagekoloniën en slavernij",t:"WIC",d:"West-Indische Compagnie; Nederlands handelsbedrijf dat actief was in de Atlantische handel, inclusief slavernij.",k:"Nederlands koloniaalbedrijf"},
+  {c:"br",s:"6. De Verenigde Staten",t:"Amerikaanse revolutie",d:"De onafhankelijkheidsstrijd van de dertien koloniën tegen Groot-Brittannië (1775–1783).",k:"koloniën worden onafhankelijk"},
+  {c:"br",s:"6. De Verenigde Staten",t:"Volkssoevereiniteit",d:"Het principe dat staatsmacht ontleend wordt aan de wil van het volk.",k:"volk = bron van macht"},
+  {c:"br",s:"6. De Verenigde Staten",t:"Natuurrechten",d:"Rechten die elk mens van nature bezit (leven, vrijheid, eigendom); term van John Locke.",k:"aangeboren rechten"},
+  {c:"br",s:"6. De Verenigde Staten",t:"Verdraagzaamheid",d:"Het accepteren van andere meningen, geloven of leefstijlen.",k:"anderen accepteren"},
+  {c:"br",s:"6. De Verenigde Staten",t:"Grondwet",d:"De hoogste wet van een land die de staatsinrichting en grondrechten vastlegt.",k:"wet der wetten"},
+  {c:"br",s:"6. De Verenigde Staten",t:"Rechtsstaat",d:"Een staat waarin de overheid zelf ook gebonden is aan de wet.",k:"overheid ook aan wet"},
+  {c:"br",s:"6. De Verenigde Staten",t:"Driemachtenleer (Trias Politica)",d:"Scheiding van macht in wetgevende, uitvoerende en rechterlijke macht ter voorkoming van tirannie.",k:"macht in drie stukken"},
+  {c:"br",s:"7. Handelsimperialisme in India",t:"East India Company",d:"Brits handelsbedrijf dat het handelsmonopolie op India had en uiteindelijk ook bestuurde.",k:"bedrijf als bestuurder"},
+  {c:"br",s:"7. Handelsimperialisme in India",t:"Mogol-vorsten",d:"De islamitische keizers die voor de Britse overheersing over groot India heersten.",k:"heersers vóór Britten"},
+  {c:"br",s:"7. Handelsimperialisme in India",t:"Verdrag van Allahabad",d:"Verdrag (1765) waarbij de Britse EIC het recht kreeg India's belastingen te innen.",k:"Britten controleren belasting"},
+  {c:"br",s:"7. Handelsimperialisme in India",t:"Inheems bestuur",d:"Lokale bestuurders die onder Brits toezicht het dagelijks bestuur voerden.",k:"lokaal, maar Brits gezag"},
+  {c:"br",s:"7. Handelsimperialisme in India",t:"Brits-Indische leger",d:"Indiase soldaten (sepoys) in dienst van de EIC, bestuurd door Britse officieren.",k:"Indiërs voor Britten"},
+  {c:"br",s:"7. Handelsimperialisme in India",t:"Handelsimperialisme",d:"Overheersing van een land via economische controle (handel, schulden) zonder direct koloniaal bestuur.",k:"macht via handel"},
+  {c:"br",s:"8. Naar modern imperialisme in India",t:"Opstand van Indiase soldaten",d:"De Sepoy-opstand (1857): Indiase soldaten kwamen in opstand tegen de Britse EIC.",k:"soldaten in opstand"},
+  {c:"br",s:"8. Naar modern imperialisme in India",t:"Direct gezag",d:"Na de opstand nam de Britse kroon het bestuur van India over van de EIC.",k:"overheid neemt over"},
+  {c:"br",s:"8. Naar modern imperialisme in India",t:"Koningin Victoria",d:"Britse koningin die in 1876 keizerin van India werd; symbool van het Britse imperialisme.",k:"keizerin van India"},
+  {c:"br",s:"8. Naar modern imperialisme in India",t:"Indian National Congress",d:"Indiase politieke partij (opgericht 1885) die streefde naar meer zelfbestuur en later onafhankelijkheid.",k:"begin Indiaas nationalisme"},
+  {c:"br",s:"9. Industrialisatie en kolonialisme",t:"Modern imperialisme",d:"De koloniale uitbreiding van Europese mogendheden na 1870, gedreven door industriële economie.",k:"industriële machtspolitiek"},
+  {c:"br",s:"9. Industrialisatie en kolonialisme",t:"Superioriteit",d:"Het gevoel of idee dat de ene groep/natie beter of hoger is dan de andere; gebruikte rechtvaardiging voor kolonialisme.",k:"wij zijn beter-denken"},
+  {c:"br",s:"9. Industrialisatie en kolonialisme",t:"Suezkanaal",d:"Kanaal in Egypte (geopend 1869) dat de reis naar Azië enorm verkortte; strategisch voor Britten.",k:"shortcut naar Azië"},
+  {c:"br",s:"9. Industrialisatie en kolonialisme",t:"Wereldrijk",d:"Een staat die grote gebieden over de hele wereld beheerst; het Britse Rijk was het grootste ooit.",k:"macht over de wereld"},
+  {c:"br",s:"Tijdvak 5–6",t:"Renaissance",d:"Europese culturele hergeboorte (14e–17e eeuw) met hernieuwde interesse in Griekse en Romeinse cultuur.",k:"wedergeboorte cultuur"},
+  {c:"br",s:"Tijdvak 5–6",t:"Humanisme (16e eeuw)",d:"Stroming die de mens en zijn capaciteiten centraal stelt, minder gericht op God.",k:"mens centraal"},
+  {c:"br",s:"Tijdvak 5–6",t:"Nieuw mensbeeld",d:"Het renaissancistisch idee dat de mens zelf zijn lot kan bepalen via kennis en rede.",k:"mens bepaalt lot"},
+  {c:"br",s:"Tijdvak 5–6",t:"Nieuw wereldbeeld",d:"Het besef dat de aarde om de zon draait en de wereld groter is dan gedacht (Copernicus).",k:"zon = middelpunt"},
+  {c:"br",s:"Tijdvak 5–6",t:"Wetenschappelijk denken",d:"Kennis gebaseerd op waarneming en experiment in plaats van geloof en autoriteit.",k:"bewijzen met feiten"},
+  {c:"br",s:"Tijdvak 5–6",t:"Reformatie",d:"Religieuze beweging die de katholieke kerk bekritiseerde; leidde tot protestantisme.",k:"kerk splitst"},
+  {c:"br",s:"Tijdvak 5–6",t:"Aflaat",d:"Betaling aan de kerk om zondes kwijt te schelden; aanleiding voor Luthers protest.",k:"zonden kopen"},
+  {c:"br",s:"Tijdvak 5–6",t:"Katholiek",d:"Lid van de rooms-katholieke kerk, met de paus als hoogste gezag.",k:"paus als leider"},
+  {c:"br",s:"Tijdvak 5–6",t:"Protestant",d:"Christen die zich afscheidde van de katholieke kerk na de Reformatie.",k:"breker met Rome"},
+  {c:"br",s:"Tijdvak 5–6",t:"Ketters",d:"Mensen die door de kerk als gevaarlijk voor het geloof werden beschouwd en vervolgd.",k:"veroordeeld geloof"},
+  {c:"br",s:"Tijdvak 5–6",t:"Godsdienstoorlogen",d:"Oorlogen in de 16e–17e eeuw tussen katholieken en protestanten.",k:"geloof als oorlogsoorzaak"},
+  {c:"br",s:"Tijdvak 5–6",t:"Beeldenstorm",d:"1566: protestanten vernielden katholieke beelden en kerkelijke kunst in de Nederlanden.",k:"kerkbeelden vernield"},
+  {c:"br",s:"Tijdvak 5–6",t:"Nederlandse Opstand",d:"Opstand van de Nederlanden tegen het Spaanse gezag (1568–1648); leidde tot de Republiek.",k:"opstand tegen Spanje"},
+  {c:"br",s:"Tijdvak 5–6",t:"Plakkaat van Verlatinghe",d:"1581: officiële verklaring waarbij de Nederlanden het gezag van Filips II afwezen.",k:"onafhankelijkheidsverklaring NL"},
+  {c:"br",s:"Tijdvak 5–6",t:"Republiek der Zeven Verenigde Nederlanden",d:"De onafhankelijke staat die ontstond na de opstand, bestuurd zonder koning.",k:"republiek zonder koning"},
+  {c:"br",s:"Tijdvak 5–6",t:"Leonardo da Vinci",d:"Italiaans renaissancekunstenaar en uitvinder; symbool van de universele renaissancemens.",k:"genie van de Renaissance"},
+  {c:"br",s:"Tijdvak 5–6",t:"Erasmus",d:"Nederlandse humanist en geleerde die de kerk bekritiseerde zonder te breken.",k:"humanist van de kerk"},
+  {c:"br",s:"Tijdvak 5–6",t:"Maarten Luther",d:"Duits monnik die in 1517 de 95 stellingen schreef; grondlegger van de Reformatie.",k:"starter Reformatie"},
+  {c:"br",s:"Tijdvak 5–6",t:"Filips II",d:"Spaanse koning die de Nederlanden met geweld katholiek wilde houden.",k:"Spaanse onderdrukker"},
+  {c:"br",s:"Tijdvak 5–6",t:"Willem van Oranje",d:"Leider van de Nederlandse Opstand tegen Spanje; vader des vaderlands.",k:"leider opstand"},
+  {c:"br",s:"Tijdvak 5–6",t:"Absoluut vorst",d:"Een monarch met onbeperkte macht, niet gebonden aan wetten of parlement.",k:"almachtige koning"},
+  {c:"br",s:"Tijdvak 5–6",t:"Goddelijk recht (Droit Divin)",d:"Idee dat een vorst zijn macht van God ontvangt en dus niet verantwoording hoeft af te leggen.",k:"God geeft macht aan vorst"},
+  {c:"br",s:"Tijdvak 5–6",t:"Mercantilisme",d:"Economisch systeem waarbij een staat zoveel mogelijk goud nastreeft via exportoverschot.",k:"staat stuurt economie"},
+  {c:"br",s:"Tijdvak 5–6",t:"Regenten",d:"Rijke burgers die in de Republiek het bestuur in handen hadden.",k:"rijke bestuurders"},
+  {c:"br",s:"Tijdvak 5–6",t:"Stadhouder",d:"Militaire en politieke leider in de Republiek, vaak uit het Huis Oranje.",k:"militaire leider"},
+  {c:"br",s:"Tijdvak 5–6",t:"Staten-Generaal",d:"Het hoogste bestuurscollege van de Republiek, bestaande uit vertegenwoordigers van de provincies.",k:"parlement van de Republiek"},
+  {c:"br",s:"Tijdvak 5–6",t:"Gouden Eeuw",d:"De 17e eeuw waarin de Republiek een bloeiperiode kende op het gebied van handel, kunst en wetenschap.",k:"topperiode Nederland"},
+  {c:"br",s:"Tijdvak 5–6",t:"VOC",d:"Vereenigde Oost-Indische Compagnie; Nederlands handelsbedrijf dat handelde in Azië.",k:"Aziatisch handelsbedrijf"},
+  {c:"br",s:"Tijdvak 5–6",t:"Wetenschappelijke revolutie",d:"17e-eeuwse omwenteling waarbij de moderne wetenschap ontstond op basis van experiment en wiskunde.",k:"wetenschap begint"},
+  {c:"br",s:"Tijdvak 5–6",t:"Empirisme",d:"Filosofie waarbij kennis alleen via zintuigelijke ervaring en experiment verkregen kan worden.",k:"kennis via ervaring"},
+  {c:"br",s:"Tijdvak 5–6",t:"Rationalisme",d:"Filosofie waarbij kennis via rede en logisch denken wordt verkregen.",k:"kennis via rede"},
+  {c:"br",s:"Tijdvak 5–6",t:"Gewetensvrijheid",d:"Het recht om zelf te bepalen wat je gelooft zonder dwang van staat of kerk.",k:"vrij geloven"},
+  {c:"br",s:"Tijdvak 5–6",t:"Lodewijk XIV",d:"Frans absolutistisch koning ('de Zonnekoning') die enorme macht centraliseerde.",k:"zonnekoning"},
+  {c:"br",s:"Tijdvak 5–6",t:"René Descartes",d:"Frans filosoof en rationalist; bekend van 'Cogito ergo sum' (ik denk, dus ik besta).",k:"vader rationalisme"},
+  {c:"br",s:"Tijdvak 5–6",t:"Spinoza",d:"Nederlands filosoof die pleidooi hield voor vrijheid van denken en scheiding van kerk en staat.",k:"vrijdenker"},
+  {c:"br",s:"Tijdvak 5–6",t:"Rembrandt van Rijn",d:"Beroemde Nederlandse schilder uit de Gouden Eeuw, meester van licht en schaduw.",k:"schilder Gouden Eeuw"},
+  {c:"br",s:"Tijdvak 5–6",t:"Johan de Witt",d:"Raadspensionaris van de Republiek in de 17e eeuw; leidde de staat zonder stadhouder.",k:"leider zonder stadhouder"},
+  // ── Duitsland ──
+  {c:"de",s:"1. Democratie en dictatuur in Duitsland",t:"Nationalisme",d:"Sterk gevoel van trots op en loyaliteit aan de eigen natie; kan leiden tot vijandigheid tegenover anderen.",k:"natiebewustzijn"},
+  {c:"de",s:"1. Democratie en dictatuur in Duitsland",t:"Ideologie",d:"Een samenhangend geheel van ideeën en overtuigingen dat een politiek systeem of beweging stuurt.",k:"politieke ideeënset"},
+  {c:"de",s:"1. Democratie en dictatuur in Duitsland",t:"Propaganda",d:"Eenzijdige informatie die mensen beïnvloedt om een bepaalde mening of leider te steunen.",k:"manipulerende boodschap"},
+  {c:"de",s:"2. De eerste democratie",t:"Republiek van Weimar",d:"De democratische staatsvorm van Duitsland na WO1 (1919–1933), verzwakt door crisis en extremisme.",k:"zwakke democratie"},
+  {c:"de",s:"2. De eerste democratie",t:"Parlementaire democratie",d:"Regeringsvorm waarbij gekozen volksvertegenwoordigers de macht uitoefenen.",k:"gekozen bestuur"},
+  {c:"de",s:"2. De eerste democratie",t:"Conservatieve elite",d:"De oude machthebbers (adel, generaals, industriëlen) die de democratie wantrouwden.",k:"oude macht"},
+  {c:"de",s:"2. De eerste democratie",t:"Extremistische groepen",d:"Partijen aan de uiterste linker- of rechterzijde die de democratie wilden omverwerpen.",k:"radicale partijen"},
+  {c:"de",s:"2. De eerste democratie",t:"Dolkstootlegende",d:"Mythe dat Duitsland WO1 niet verloor op het slagveld, maar door verraad vanuit het thuisfront.",k:"nep-verklaring verlies WO1"},
+  {c:"de",s:"2. De eerste democratie",t:"Herstelbetalingen",d:"Straf die Duitsland na WO1 moest betalen aan de overwinnaars; veroorzaakte economische ellende.",k:"Duitsland betaalt oorlog"},
+  {c:"de",s:"2. De eerste democratie",t:"Dawesplan",d:"Amerikaans plan (1924) om Duitsland te helpen de herstelbetalingen te betalen via leningen.",k:"lening voor herstel"},
+  {c:"de",s:"2. De eerste democratie",t:"Verzoeningspolitiek",d:"Beleid van buurlanden om conflicten met Duitsland door concessies te vermijden.",k:"toegeven om oorlog te voorkomen"},
+  {c:"de",s:"2. De eerste democratie",t:"Beurskrach",d:"De beurscrash van 1929 waarmee de wereldwijde economische crisis begon.",k:"beurs stort in"},
+  {c:"de",s:"2. De eerste democratie",t:"Economische wereldcrisis",d:"De Grote Depressie (1929–1939): massale werkloosheid en armoede wereldwijd.",k:"wereldwijde armoede"},
+  {c:"de",s:"3. De eerste dictatuur",t:"Adolf Hitler",d:"Leider van de NSDAP, bondskanselier en dictator van Duitsland (1933–1945).",k:"nazi-dictator"},
+  {c:"de",s:"3. De eerste dictatuur",t:"Nationaalsocialisme",d:"Hitlers totalitaire ideologie: nationalistisch, racistisch, antisemitisch en antidemocratisch.",k:"nazi-ideologie"},
+  {c:"de",s:"3. De eerste dictatuur",t:"NSDAP",d:"Nationalsozialistische Deutsche Arbeiterpartei; de partij van Hitler die Duitsland regeerde 1933–1945.",k:"Hitlers partij"},
+  {c:"de",s:"3. De eerste dictatuur",t:"Fascisme",d:"Totalitaire, ultranationalistische ideologie met sterke leider, staat boven individu.",k:"dictatoriale staatsvorm"},
+  {c:"de",s:"3. De eerste dictatuur",t:"Totalitaire staat",d:"Een staat die totale controle heeft over alle aspecten van het leven van burgers.",k:"staat controleert alles"},
+  {c:"de",s:"3. De eerste dictatuur",t:"Volksgemeinschaft",d:"Nazi-ideaal van een 'volksgemeenschap' gebaseerd op ras, waarbij Joden en anderen werden uitgesloten.",k:"rasgebonden gemeenschap"},
+  {c:"de",s:"3. De eerste dictatuur",t:"Nazificeren",d:"Het doorvoeren van nazi-ideologie in alle lagen van de samenleving, cultuur en staat.",k:"alles nazi maken"},
+  {c:"de",s:"3. De eerste dictatuur",t:"Censuur",d:"Het verbieden of controleren van informatie, kunst en media door de overheid.",k:"verboden informatie"},
+  {c:"de",s:"3. De eerste dictatuur",t:"Rijksdagbrand",d:"Brand in het parlementsgebouw (1933), door de nazi's gebruikt om noodwetten in te voeren.",k:"brand = machtgreep"},
+  {c:"de",s:"3. De eerste dictatuur",t:"Machtigingswet",d:"Wet (1933) die Hitler de bevoegdheid gaf om wetten uit te vaardigen zonder het parlement.",k:"Hitler krijgt alle macht"},
+  {c:"de",s:"3. De eerste dictatuur",t:"Arbeidsdienst",d:"Verplichte arbeid voor jonge Duitsers, bedoeld voor infrastructuur en militaire training.",k:"verplicht werken"},
+  {c:"de",s:"3. De eerste dictatuur",t:"Rijkskanselier",d:"De minister-president van Duitsland; Hitler werd dit in 1933.",k:"regeringsleider Duitsland"},
+  {c:"de",s:"4. De tweede democratie",t:"Bondsrepubliek Duitsland (BRD)",d:"West-Duitsland na WO2; een democratische staat onder westerse invloed.",k:"democratisch West-Duitsland"},
+  {c:"de",s:"4. De tweede democratie",t:"Konrad Adenauer",d:"Eerste bondskanselier van de BRD (1949–1963); bouwde westerse democratie op.",k:"vader West-Duitsland"},
+  {c:"de",s:"4. De tweede democratie",t:"Wirtschaftswunder",d:"Het 'economisch wonder': de snelle economische groei van West-Duitsland in de jaren 1950.",k:"economisch herstel"},
+  {c:"de",s:"4. De tweede democratie",t:"EGKS",d:"Europese Gemeenschap voor Kolen en Staal; voorloper van de EU, begon Europese samenwerking.",k:"basis Europese samenwerking"},
+  {c:"de",s:"4. De tweede democratie",t:"Kapitalisme",d:"Economisch systeem waarbij productiemiddelen in privébezit zijn en de markt bepaalt.",k:"vrije markteconomie"},
+  {c:"de",s:"5. De tweede dictatuur",t:"Duitse Democratische Republiek (DDR)",d:"Oost-Duitsland na WO2; een communistische dictatuur onder Sovjet-invloed.",k:"communistisch Oost-Duitsland"},
+  {c:"de",s:"5. De tweede dictatuur",t:"Volksdemocratie",d:"Communistische term voor een staatsbestel dat beweerde namens het volk te regeren, maar in feite een dictatuur was.",k:"dictatuur in democraatverpakking"},
+  {c:"de",s:"5. De tweede dictatuur",t:"Walter Ulbricht",d:"Eerste leider van de DDR (tot 1971); loyaal aan de Sovjet-Unie.",k:"eerste DDR-leider"},
+  {c:"de",s:"5. De tweede dictatuur",t:"Erich Honecker",d:"DDR-leider (1971–1989); liet de Berlijnse Muur bouwen en viel met de DDR.",k:"laatste DDR-leider"},
+  {c:"de",s:"5. De tweede dictatuur",t:"Staatssicherheitsdienst",d:"De Stasi: geheime politie van de DDR die burgers bespioneerde.",k:"geheime spionagedienst"},
+  {c:"de",s:"5. De tweede dictatuur",t:"Planeconomie",d:"Economisch systeem waarbij de staat alle productie en distributie centraal bepaalt.",k:"staat stuurt economie"},
+  {c:"de",s:"5. De tweede dictatuur",t:"Comecon",d:"Sovjet-geleid economisch samenwerkingsverband van communistische landen als alternatief voor westerse handel.",k:"Sovjet-economieblok"},
+  {c:"de",s:"5. De tweede dictatuur",t:"Warschaupact",d:"Militair bondgenootschap van de Sovjet-Unie en Oost-Europese landen, tegenover de NAVO.",k:"communistisch militair blok"},
+  {c:"de",s:"5. De tweede dictatuur",t:"Invloedssfeer",d:"Een gebied waar een grootmacht (VS of USSR) dominant politieke invloed uitoefent.",k:"machtsgebied"},
+  {c:"de",s:"5. De tweede dictatuur",t:"Mislukte opstand in de DDR",d:"De opstand van 17 juni 1953 in Oost-Duitsland, die door Sovjet-tanks werd neergeslagen.",k:"opstand neergeslagen"},
+  {c:"de",s:"6. De tweede democratie in heel Duitsland",t:"Koude oorlog",d:"De machtsstrijd (1945–1991) tussen de VS en USSR zonder directe oorlog, maar via wapenwedloop en propaganda.",k:"rivaliteit zonder gevecht"},
+  {c:"de",s:"6. De tweede democratie in heel Duitsland",t:"Sovjet-Unie",d:"De communistische supermacht die Oost-Europa domineerde van 1917 tot 1991.",k:"communistische supermacht"},
+  {c:"de",s:"6. De tweede democratie in heel Duitsland",t:"Berlijnse Muur",d:"Muur die Oost- en West-Berlijn scheidde (1961–1989); symbool van de Koude Oorlog.",k:"muur van scheiding"},
+  {c:"de",s:"6. De tweede democratie in heel Duitsland",t:"Blokkade van Berlijn",d:"Sovjet-blokkade van West-Berlijn (1948–1949); Westen reageerde met een luchtbrug.",k:"Berlijn afgesloten"},
+  {c:"de",s:"6. De tweede democratie in heel Duitsland",t:"Luchtbrug",d:"Massale luchtbevoorrading van West-Berlijn door westerse vliegtuigen tijdens de Sovjet-blokkade.",k:"bevoorrading per vliegtuig"},
+  {c:"de",s:"6. De tweede democratie in heel Duitsland",t:"Detente",d:"Periode van ontspanning in de Koude Oorlog (jaren 1970) met meer diplomatiek contact.",k:"ontspanning koude oorlog"},
+  {c:"de",s:"6. De tweede democratie in heel Duitsland",t:"Ostpolitik",d:"Beleid van Willy Brandt om betere relaties met Oost-Duitsland en de Sovjet-Unie te ontwikkelen.",k:"toenadering tot Oost"},
+  {c:"de",s:"6. De tweede democratie in heel Duitsland",t:"Willy Brandt",d:"West-Duitse bondskanselier die Ostpolitik voerde en beroemd werd door zijn kniebuiging in Warschau.",k:"vredeskanselier"},
+  {c:"de",s:"6. De tweede democratie in heel Duitsland",t:"Glasnost en perestrojka",d:"Gorbatsjovs hervormingen: openheid en economische herstructurering in de USSR.",k:"Sovjet-hervorming"},
+  {c:"de",s:"6. De tweede democratie in heel Duitsland",t:"Brezjnevdoctrine",d:"Sovjet-beleid dat stelde dat de USSR het recht had communistische regimes in Oost-Europa te beschermen.",k:"USSR beschermt bondgenoten"},
+  {c:"de",s:"6. De tweede democratie in heel Duitsland",t:"Val van de Berlijnse muur",d:"9 november 1989: de Berlijnse Muur viel, symbool van het einde van de Koude Oorlog.",k:"einde scheiding"},
+  {c:"de",s:"6. De tweede democratie in heel Duitsland",t:"Hereniging van Duitsland",d:"Op 3 oktober 1990 werden Oost- en West-Duitsland één staat.",k:"één Duitsland"},
+  {c:"de",s:"6. De tweede democratie in heel Duitsland",t:"Helmut Kohl",d:"West-Duitse bondskanselier die de hereniging van Duitsland leidde.",k:"kanselier hereniging"},
+  {c:"de",s:"6. De tweede democratie in heel Duitsland",t:"Integratie van de voormalige DDR",d:"Het samenvoegen van Oost- en West-Duitsland op politiek, economisch en sociaal vlak na 1990.",k:"samensmelting na val muur"},
+  {c:"de",s:"6. De tweede democratie in heel Duitsland",t:"Uiteenvallen van de Sovjet-Unie",d:"In 1991 viel de USSR uiteen in 15 onafhankelijke staten; einde Koude Oorlog.",k:"USSR valt uiteen"},
+  {c:"de",s:"Tijdvak 7–9",t:"Eerste Wereldoorlog",d:"Oorlog (1914–1918) waarbij Europese grootmachten slaags raakten; miljoenen doden.",k:"grote Europese oorlog"},
+  {c:"de",s:"Tijdvak 7–9",t:"Bondgenootschappen",d:"Militaire afspraken tussen landen om elkaar te steunen bij aanval; schakel achter WO1.",k:"landen steunen elkaar"},
+  {c:"de",s:"Tijdvak 7–9",t:"Loopgravenoorlog",d:"Oorlogsvoering waarbij legers vastzitten in gegraven loopgraven tegenover elkaar.",k:"graven als fort"},
+  {c:"de",s:"Tijdvak 7–9",t:"Vrede van Versailles",d:"Vredesverdrag (1919) dat WO1 beëindigde; legde zware straffen op aan Duitsland.",k:"strafverdrag voor Duitsland"},
+  {c:"de",s:"Tijdvak 7–9",t:"Tweede Wereldoorlog",d:"Oorlog (1939–1945) aangewakkerd door Hitler; de verwoestendste oorlog ooit, met Holocaust.",k:"verwoestendste oorlog"},
+  {c:"de",s:"Tijdvak 7–9",t:"Bewegingsoorlog (Blitzkrieg)",d:"Snelle, mobiele aanvalsstrategie van de nazi's met tanks en vliegtuigen.",k:"razendsnel aanvallen"},
+  {c:"de",s:"Tijdvak 7–9",t:"Genocide",d:"De systematische en doelbewuste vernietiging van een etnische, religieuze of nationale groep.",k:"groep uitroeien"},
+  {c:"de",s:"Tijdvak 7–9",t:"Concentratiekamp / vernietigingskamp",d:"Nazi-kampen waar gevangenen werden opgesloten, uitgebuit en/of systematisch vermoord.",k:"kamp van de dood"},
+  {c:"de",s:"Tijdvak 7–9",t:"Jodenvervolging (holocaust/Shoah)",d:"De systematische moord op 6 miljoen Joden door de nazi's.",k:"moord op Joden"},
+  {c:"de",s:"Tijdvak 7–9",t:"Bezetting",d:"Het militair innemen van een land door een vijandige mogendheid.",k:"vijand neemt land over"},
+  {c:"de",s:"Tijdvak 7–9",t:"Collaboratie",d:"Samenwerking met de bezettende vijand, ook uit eigenbelang.",k:"meewerken met vijand"},
+  {c:"de",s:"Tijdvak 7–9",t:"Accommodatie",d:"Aanpassing aan de bezetter zonder actief samen te werken; grijs gebied.",k:"aanpassen aan bezetter"},
+  {c:"de",s:"Tijdvak 7–9",t:"Verzet",d:"Actieve tegenwerking van de bezetter, van sabotage tot onderduiken.",k:"tegenstaan van bezetter"},
+  {c:"de",s:"Tijdvak 7–9",t:"Totale oorlog",d:"Oorlog waarbij de gehele samenleving (economie, bevolking) wordt ingezet voor de oorlogsinspanning.",k:"heel land in oorlog"},
+  {c:"de",s:"Tijdvak 7–9",t:"Massavernietigingswapens",d:"Wapens die op grote schaal mensen kunnen doden: atoom-, chemische of biologische wapens.",k:"wapens van massamoord"},
+  {c:"de",s:"Tijdvak 7–9",t:"Atoombom",d:"Nucleair wapen dat in 1945 op Hiroshima en Nagasaki werd gegooid; beëindigde WO2 in de Pacific.",k:"nucleair wapen"},
+  {c:"de",s:"Tijdvak 7–9",t:"Franz Ferdinand",d:"Aartshertog van Oostenrijk-Hongarije; zijn moord in 1914 leidde tot WO1.",k:"moord start WO1"},
+  {c:"de",s:"Tijdvak 7–9",t:"Lenin",d:"Leider van de Russische revolutie (1917) en eerste leider van de Sovjet-Unie.",k:"leider Russische revolutie"},
+  {c:"de",s:"Tijdvak 7–9",t:"Josef Stalin",d:"Totalitaire dictator van de Sovjet-Unie (1924–1953); verantwoordelijk voor miljoenen doden.",k:"Sovjet-dictator"},
+  {c:"de",s:"Tijdvak 7–9",t:"Russische revolutie",d:"De omwenteling in 1917 waarbij de tsaar werd afgezet en de bolsjewieken de macht grepen.",k:"communisten nemen macht"},
+  // ── Nederland ──
+  {c:"nl",s:"1. Een land om uit weg te vluchten",t:"Emigratieland",d:"Nederland als land dat na WO2 veel bewoners zag vertrekken naar andere landen.",k:"Nederlanders verlaten land"},
+  {c:"nl",s:"1. Een land om uit weg te vluchten",t:"Babyboom",d:"De sterke bevolkingsgroei na WO2 door hoog geboortecijfer.",k:"veel baby's na oorlog"},
+  {c:"nl",s:"1. Een land om uit weg te vluchten",t:"Australië, Nieuw-Zeeland en Canada",d:"De populairste emigratiebestemmingen voor Nederlanders na WO2.",k:"waar Nederlanders heen gingen"},
+  {c:"nl",s:"2. Een land om op te bouwen",t:"Marshallhulp",d:"Amerikaans economisch hulpplan na WO2 om West-Europa te helpen herbouwen.",k:"Amerikaanse hulp voor herbouw"},
+  {c:"nl",s:"2. Een land om op te bouwen",t:"Wederopbouw",d:"De herstelperiode van Nederland na WO2, gericht op economisch en maatschappelijk herstel.",k:"Nederland herstelt"},
+  {c:"nl",s:"2. Een land om op te bouwen",t:"Rooms-rode regeringen",d:"Nederlandse naoorlogse coalitieregeringen van de KVP (katholiek) en PvdA (sociaaldemocratisch).",k:"rooms-rood samenwerking"},
+  {c:"nl",s:"2. Een land om op te bouwen",t:"Geleide loonpolitiek",d:"Overheidsbeleid waarbij de lonen laag werden gehouden om de economie te stimuleren.",k:"overheid bepaalt loon"},
+  {c:"nl",s:"2. Een land om op te bouwen",t:"Aardgas",d:"De ontdekking van het Groningse aardgasveld (1959) bracht grote inkomsten voor Nederland.",k:"gasrijkdom Groningen"},
+  {c:"nl",s:"3. De verzorgingsstaat",t:"Verzorgingsstaat",d:"Een staatssysteem waarbij de overheid zorgt voor basisbehoeften van burgers: zorg, uitkering, onderwijs.",k:"staat zorgt voor burgers"},
+  {c:"nl",s:"3. De verzorgingsstaat",t:"Sociale partners",d:"Overleg tussen overheid, werkgevers en vakbonden over arbeidsvoorwaarden.",k:"overleg over werk"},
+  {c:"nl",s:"3. De verzorgingsstaat",t:"AOW",d:"Algemene Ouderdomswet: staatspensioen voor iedereen boven de 65.",k:"pensioen voor iedereen"},
+  {c:"nl",s:"3. De verzorgingsstaat",t:"Sociale wetgeving",d:"Wetten die de positie van werknemers, zieken en ouderen beschermen.",k:"wetten voor bescherming"},
+  {c:"nl",s:"3. De verzorgingsstaat",t:"Consumptiemaatschappij",d:"Een samenleving gekenmerkt door massale consumptie van goederen, TV's, auto's, etc.",k:"veel kopen & bezitten"},
+  {c:"nl",s:"3. De verzorgingsstaat",t:"Welvaart",d:"De toestand van economische vooruitgang en stijgende levensstandaard.",k:"rijker worden"},
+  {c:"nl",s:"4. De culturele revolutie",t:"Ontzuiling",d:"Het afbrokkelen van de religieus-politieke zuilen (kolommen) in de Nederlandse samenleving.",k:"minder invloed kerk & zuilen"},
+  {c:"nl",s:"4. De culturele revolutie",t:"Ontkerkelijking (secularisatie)",d:"Het afnemen van religieuze betrokkenheid en invloed van de kerk in de samenleving.",k:"religie verliest invloed"},
+  {c:"nl",s:"4. De culturele revolutie",t:"Jongerencultuur",d:"Een eigen cultuur van jongeren in de jaren '60, met eigen muziek, kleding en waarden.",k:"eigen cultuur jongeren"},
+  {c:"nl",s:"4. De culturele revolutie",t:"Protestgeneratie",d:"De generatie van de jaren '60 die protesteerde tegen autoriteit, oorlog en burgerlijkheid.",k:"rebellerende jongeren"},
+  {c:"nl",s:"4. De culturele revolutie",t:"Nozems",d:"Nederlandse jeugdsubcultuur jaren '50; rebelse jongeren geïnspireerd op Amerikaanse rockmuziek.",k:"eerste rebelse jongeren"},
+  {c:"nl",s:"4. De culturele revolutie",t:"Provo's",d:"Protestbeweging in Amsterdam in de jaren '60, gericht op maatschappelijke verandering.",k:"provocerende activisten"},
+  {c:"nl",s:"4. De culturele revolutie",t:"Hippies",d:"Jaren '60-beweging voor vrede, vrijheid, liefde en protest tegen establishment.",k:"vrede & vrijheid"},
+  {c:"nl",s:"4. De culturele revolutie",t:"Gezag",d:"Het erkende recht om te leiden of te bevelen; in de jaren '60 steeds meer bekritiseerd.",k:"respect voor autoriteit"},
+  {c:"nl",s:"5. Emancipatie",t:"Emancipatie",d:"Het proces waarbij groepen gelijke rechten en vrijheden verwerven die eerder werden onthouden.",k:"gelijke rechten"},
+  {c:"nl",s:"5. Emancipatie",t:"Tweede feministische golf",d:"De vrouwenrechtenbeweging van de jaren '60–'70 gericht op gelijkheid in werk, seksualiteit en politiek.",k:"vrouwen eisen gelijkheid"},
+  {c:"nl",s:"5. Emancipatie",t:"Man Vrouw Maatschappij",d:"Nederlandse organisatie die pleitte voor gelijkheid van mannen en vrouwen in alle maatschappelijke rollen.",k:"gelijkheid man-vrouw"},
+  {c:"nl",s:"5. Emancipatie",t:"Dolle Mina",d:"Radicale Nederlandse feministische beweging in de jaren '70 voor vrouwenemancipatie.",k:"radicale feministen"},
+  {c:"nl",s:"5. Emancipatie",t:"Anticonceptiepil",d:"De pil maakte vrouwen vrij in keuzes over zwangerschap; grote invloed op seksuele vrijheid.",k:"vrijheid over voortplanting"},
+  {c:"nl",s:"5. Emancipatie",t:"Echtscheidingswetgeving",d:"Wetswijzigingen die scheiding makkelijker maakten, bijdragend aan individuele vrijheid.",k:"scheiden wordt makkelijker"},
+  {c:"nl",s:"5. Emancipatie",t:"Algemene Wet Gelijke Behandeling",d:"Nederlandse wet die discriminatie op grond van ras, geslacht, geloof etc. verbiedt.",k:"verbod op discriminatie"},
+  {c:"nl",s:"5. Emancipatie",t:"Homohuwelijk",d:"Nederland was in 2001 het eerste land ter wereld dat het huwelijk voor homorelaties openstelde.",k:"gelijkheid in huwelijk"},
+  {c:"nl",s:"5. Emancipatie",t:"Euthanasiewetgeving",d:"Wet die in 2002 actieve hulp bij het sterven onder strenge voorwaarden legaliseerde.",k:"recht op sterven"},
+  {c:"nl",s:"5. Emancipatie",t:"Aletta Jacobs",d:"Eerste vrouw die in Nederland medicijnen studeerde; pionier voor vrouwenkiesrecht.",k:"eerste vrouw universiteit"},
+  {c:"nl",s:"6. Migratiestromen",t:"Gastarbeiders",d:"Arbeiders uit Turkije, Marokko etc. die in de jaren '60–'70 naar Nederland kwamen op tijdelijke basis.",k:"tijdelijke buitenlandse arbeid"},
+  {c:"nl",s:"6. Migratiestromen",t:"Migranten",d:"Mensen die van land of regio verhuizen, al dan niet vrijwillig.",k:"mensen die verhuizen"},
+  {c:"nl",s:"6. Migratiestromen",t:"Turkije en Marokko",d:"Landen vanwaar de meeste gastarbeiders naar Nederland kwamen in de jaren '60–'70.",k:"herkomstlanden gastarbeiders"},
+  {c:"nl",s:"6. Migratiestromen",t:"Indonesië en Suriname",d:"Voormalige Nederlandse kolonies vanwaar veel mensen naar Nederland migreerden na onafhankelijkheid.",k:"migratie uit koloniën"},
+  {c:"nl",s:"6. Migratiestromen",t:"Gezinshereniging",d:"Het recht van migranten om hun gezin naar het nieuwe land te laten overkomen.",k:"gezin laten overkomen"},
+  {c:"nl",s:"6. Migratiestromen",t:"Vluchtelingen",d:"Mensen die hun land ontvluchten door oorlog, vervolging of rampen.",k:"vluchten voor gevaar"},
+  {c:"nl",s:"6. Migratiestromen",t:"Multiculturele samenleving",d:"Een samenleving met mensen uit verschillende culturen die samen leven.",k:"culturen door elkaar"},
+  {c:"nl",s:"6. Migratiestromen",t:"Integratie",d:"Het proces waarbij migranten volwaardig deelnemen aan de samenleving van het nieuwe land.",k:"opnemen in samenleving"},
+  {c:"nl",s:"6. Migratiestromen",t:"Assimilatie",d:"Het volledig overnemen van de cultuur van het nieuwe land, met opgave van eigen cultuur.",k:"cultuur opgeven"},
+  {c:"nl",s:"7. Nederland internationaal",t:"Europese Economische Gemeenschap (EEG)",d:"Economische samenwerkingsorganisatie (1957) die voorloper was van de Europese Unie.",k:"voorloper EU"},
+  {c:"nl",s:"7. Nederland internationaal",t:"Europese Unie",d:"Politiek-economische unie van Europese landen; stelt gemeenschappelijke regels en biedt vrij verkeer.",k:"EU"},
+  {c:"nl",s:"7. Nederland internationaal",t:"Euro",d:"De gemeenschappelijke munt van de eurozone, ingevoerd in 1999 (biljetten en munten 2002).",k:"gemeenschappelijke munt"},
+  {c:"nl",s:"7. Nederland internationaal",t:"Verdrag van Maastricht",d:"Verdrag (1992) dat de Europese Unie formeel oprichtte en de weg vrijmaakte voor de euro.",k:"oprichting EU"},
+  {c:"nl",s:"7. Nederland internationaal",t:"Verdrag van Schengen",d:"Verdrag (1985) dat vrij reizen zonder paspoortcontrole in Europa mogelijk maakte.",k:"grenzen open Europa"},
+  {c:"nl",s:"7. Nederland internationaal",t:"Globalisering",d:"Het proces waarbij economie, cultuur en politiek steeds meer wereldwijd verbonden raken.",k:"wereld als één"},
+  {c:"nl",s:"7. Nederland internationaal",t:"Politionele acties",d:"Nederlandse militaire acties in Indonesië (1947 en 1948) om de onafhankelijkheid te voorkomen.",k:"oorlog in kolonie"},
+  {c:"nl",s:"7. Nederland internationaal",t:"Kruisraketten",d:"Debat in Nederland (jaren '80) over plaatsing van Amerikaanse atoomraketten; groot protest.",k:"rakettendebat"},
+  {c:"nl",s:"7. Nederland internationaal",t:"Srebrenica",d:"Massamoord (1995) op Bosnische moslims door Servische troepen; Nederlandse VN-militairen faalden.",k:"VN-falen & genocide"},
+  {c:"nl",s:"7. Nederland internationaal",t:"Terreuraanslagen van 11 september",d:"Aanslagen op de VS (2001) door Al-Qaeda; veranderden globaal veiligheidsbeleid ingrijpend.",k:"aanslag op Amerika"},
+  {c:"nl",s:"7. Nederland internationaal",t:"Pim Fortuyn",d:"Nederlandse populistische politicus die in 2002 vlak voor de verkiezingen werd vermoord.",k:"vermoorde populist"},
+  {c:"nl",s:"Tijdvak 8–10",t:"Industrialisering",d:"Het proces waarbij een economie overschakelt van landbouw naar industrie en fabrieken.",k:"opkomst industrie"},
+  {c:"nl",s:"Tijdvak 8–10",t:"Constitutionele monarchie",d:"Een monarchie waarbij de macht van de koning beperkt is door een grondwet.",k:"koning met beperkte macht"},
+  {c:"nl",s:"Tijdvak 8–10",t:"Koninkrijk der Nederlanden",d:"De monarchale staatsvorm van Nederland, opgericht in 1815 na de Franse bezetting.",k:"koninklijke staatsvorm"},
+  {c:"nl",s:"Tijdvak 8–10",t:"Democratisering",d:"Het proces waarbij meer mensen politieke rechten en inspraak krijgen.",k:"meer mensen mogen meedoen"},
+  {c:"nl",s:"Tijdvak 8–10",t:"Censuskiesrecht",d:"Kiesrecht gekoppeld aan belastingbetaling; alleen rijken mochten stemmen.",k:"alleen rijken stemmen"},
+  {c:"nl",s:"Tijdvak 8–10",t:"Algemeen kiesrecht",d:"Het recht voor alle burgers (mannen 1917, vrouwen 1919) om te stemmen.",k:"iedereen mag stemmen"},
+  {c:"nl",s:"Tijdvak 8–10",t:"Politieke stromingen",d:"De verschillende ideologische richtingen in de politiek: liberalisme, socialisme, confessionalisme.",k:"soorten politiek"},
+  {c:"nl",s:"Tijdvak 8–10",t:"Willem I",d:"Eerste koning van Nederland (1813–1840); stond aan de basis van het Koninkrijk.",k:"eerste koning NL"},
+  {c:"nl",s:"Tijdvak 8–10",t:"Johan Thorbecke",d:"Liberale staatsman die de Nederlandse grondwet van 1848 schreef; vader van de democratie.",k:"grondwetschrijver"},
+  {c:"nl",s:"Tijdvak 8–10",t:"Massaorganisatie",d:"Een grote organisatie die veel leden heeft, zoals vakbonden of kerken, politieke partijen.",k:"grote ledenorganisatie"},
+  {c:"nl",s:"Tijdvak 8–10",t:"Verzuiling",d:"Het opdelen van de Nederlandse samenleving in katholieke, protestantse en socialistische 'zuilen'.",k:"leven per geloof/klasse"},
+  {c:"nl",s:"Tijdvak 8–10",t:"Antisemitisme",d:"Haat of vooroordeel jegens Joden; ideologische basis voor de Holocaust.",k:"haat jegens Joden"},
+  {c:"nl",s:"Tijdvak 8–10",t:"Dekolonisatie",d:"Het proces waarbij Europese landen hun koloniën de onafhankelijkheid gaven na WO2.",k:"koloniën worden vrij"},
+  {c:"nl",s:"Tijdvak 8–10",t:"NAVO",d:"Noord-Atlantische Verdragsorganisatie; westers militair bondgenootschap opgericht in 1949.",k:"westers militair blok"},
+  {c:"nl",s:"Tijdvak 8–10",t:"Verenigde Naties",d:"Internationale organisatie opgericht in 1945 voor vrede, veiligheid en samenwerking.",k:"wereldvredesorganisatie"},
+  {c:"nl",s:"Tijdvak 8–10",t:"Terroristische aanslagen",d:"Gewelddadige acties door extremisten gericht op het zaaien van angst bij een bevolking.",k:"angst via geweld"},
+];
+
+// ─── FLASHCARDS ──────────────────────────────────────────────────────────────
+let fcFilter = 'all';
+let fcDeck = [];
+let fcIndex = 0;
+let fcFlipped = false;
+let fcCorrect = 0;
+let fcWrong = 0;
+
+function fcSetFilter(f, el) {
+  fcFilter = f;
+  document.querySelectorAll('#fc-filters .begrip-filter').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  fcStart();
+}
+
+function fcShuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function fcStart() {
+  const pool = fcFilter === 'all' ? BEGRIPPEN : BEGRIPPEN.filter(b => b.c === fcFilter);
+  fcDeck = fcShuffle(pool);
+  fcIndex = 0;
+  fcCorrect = 0;
+  fcWrong = 0;
+  fcFlipped = false;
+  fcRender();
+}
+
+function fcRender() {
+  const area = document.getElementById('fc-area');
+  if (fcIndex >= fcDeck.length) {
+    const pct = Math.round((fcCorrect / fcDeck.length) * 100);
+    area.innerHTML = `
+      <div class="fc-result">
+        <div class="fc-result-score">${pct}%</div>
+        <div class="fc-result-label">${fcCorrect} van ${fcDeck.length} begrippen geweten</div>
+        <button class="fc-btn primary" onclick="fcStart()">Opnieuw shufflen</button>
+      </div>`;
+    return;
+  }
+  const card = fcDeck[fcIndex];
+  const pct = Math.round((fcIndex / fcDeck.length) * 100);
+  area.innerHTML = `
+    <div class="fc-counter">${fcIndex + 1} / ${fcDeck.length} &nbsp;·&nbsp; ✓ ${fcCorrect} &nbsp;·&nbsp; ✗ ${fcWrong}</div>
+    <div class="fc-progress-bar"><div class="fc-progress-fill" style="width:${pct}%"></div></div>
+    <div class="fc-card-wrap" onclick="fcFlip()">
+      <div class="fc-card" id="fc-card">
+        <div class="fc-front">
+          <div class="fc-label">Begrip</div>
+          <div class="fc-term">${card.t}</div>
+          <div class="fc-tap-hint" style="margin-top:20px;font-size:12px;color:var(--text-muted)">Klik om te omdraaien</div>
+        </div>
+        <div class="fc-back">
+          <div class="fc-label">Definitie</div>
+          <div class="fc-def">${card.d}</div>
+          <div class="fc-hint">→ ${card.k}</div>
+        </div>
+      </div>
+    </div>
+    <div class="fc-known-wrap" id="fc-known" style="display:none;width:100%;max-width:560px;">
+      <button class="fc-btn-known no" onclick="fcMark(false)">✗ Wist ik niet</button>
+      <button class="fc-btn-known yes" onclick="fcMark(true)">✓ Wist ik wel</button>
+    </div>`;
+}
+
+function fcFlip() {
+  if (fcFlipped) return;
+  fcFlipped = true;
+  document.getElementById('fc-card').classList.add('flipped');
+  document.getElementById('fc-known').style.display = 'flex';
+}
+
+function fcMark(known) {
+  if (known) fcCorrect++; else fcWrong++;
+  fcIndex++;
+  fcFlipped = false;
+  fcRender();
+}
+
+// ─── QUIZ ────────────────────────────────────────────────────────────────────
+let quizFilter = 'all';
+let quizQuestions = [];
+let quizQIndex = 0;
+let quizCorrect = 0;
+let quizWrong = 0;
+const QUIZ_LENGTH = 10;
+
+function quizSetFilter(f, el) {
+  quizFilter = f;
+  document.querySelectorAll('#quiz-filters .begrip-filter').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  quizStart();
+}
+
+function quizShuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function quizMakeQuestions(pool) {
+  const shuffled = quizShuffle(pool);
+  const questions = [];
+  for (let i = 0; i < Math.min(QUIZ_LENGTH, shuffled.length); i++) {
+    const correct = shuffled[i];
+    const useTermAsQ = Math.random() > 0.5;
+    const wrongPool = pool.filter(b => b.t !== correct.t);
+    const wrongs = quizShuffle(wrongPool).slice(0, 3);
+    const options = quizShuffle([correct, ...wrongs]);
+    questions.push({ correct, useTermAsQ, options });
+  }
+  return questions;
+}
+
+function quizStart() {
+  const pool = quizFilter === 'all' ? BEGRIPPEN : BEGRIPPEN.filter(b => b.c === quizFilter);
+  quizQuestions = quizMakeQuestions(pool);
+  quizQIndex = 0;
+  quizCorrect = 0;
+  quizWrong = 0;
+  quizRender();
+}
+
+function quizRender() {
+  const wrap = document.getElementById('quiz-wrap');
+  if (quizQIndex >= quizQuestions.length) {
+    const pct = Math.round((quizCorrect / quizQuestions.length) * 100);
+    const emoji = pct >= 80 ? '🎉' : pct >= 50 ? '💪' : '📚';
+    wrap.innerHTML = `
+      <div class="quiz-done">
+        <div class="quiz-done-emoji">${emoji}</div>
+        <div class="quiz-done-score">${pct}%</div>
+        <div class="quiz-done-label">${quizCorrect} van ${quizQuestions.length} goed — ${quizWrong} fout</div>
+        <button class="fc-btn primary" onclick="quizStart()">Nieuwe ronde</button>
+      </div>`;
+    return;
+  }
+
+  const q = quizQuestions[quizQIndex];
+  const pct = Math.round((quizQIndex / quizQuestions.length) * 100);
+  const qText = q.useTermAsQ
+    ? `Wat is de definitie van: <em>${q.correct.t}</em>?`
+    : `Welk begrip hoort bij deze definitie?<br><span style="font-weight:400;font-size:15px">"${q.correct.d}"</span>`;
+
+  const optionsHtml = q.options.map((opt, i) => {
+    const label = q.useTermAsQ ? opt.d : opt.t;
+    return `<button class="quiz-option" id="qopt-${i}" onclick="quizAnswer(${i})">${label}</button>`;
+  }).join('');
+
+  wrap.innerHTML = `
+    <div class="quiz-progress-bar"><div class="quiz-progress-fill" style="width:${pct}%"></div></div>
+    <div class="quiz-score-bar">
+      <span>Vraag ${quizQIndex + 1} van ${quizQuestions.length}</span>
+      <div class="quiz-score-pills">
+        <span class="quiz-pill correct">✓ ${quizCorrect}</span>
+        <span class="quiz-pill wrong">✗ ${quizWrong}</span>
+      </div>
+    </div>
+    <div class="quiz-question-card">
+      <div class="quiz-q-type">${q.useTermAsQ ? 'Wat betekent dit?' : 'Welk begrip is dit?'}</div>
+      <div class="quiz-q-text">${qText}</div>
+    </div>
+    <div class="quiz-options">${optionsHtml}</div>
+    <div class="quiz-feedback">
+      <div class="quiz-feedback-text" id="quiz-fb"></div>
+      <button class="quiz-next-btn" id="quiz-next" onclick="quizNext()">Volgende →</button>
+    </div>`;
+}
+
+function quizAnswer(chosenIdx) {
+  const q = quizQuestions[quizQIndex];
+  const correctIdx = q.options.indexOf(q.correct);
+  const correct = chosenIdx === correctIdx;
+  if (correct) quizCorrect++; else quizWrong++;
+
+  for (let i = 0; i < q.options.length; i++) {
+    const btn = document.getElementById('qopt-' + i);
+    btn.disabled = true;
+    if (i === correctIdx) btn.classList.add('correct');
+    else if (i === chosenIdx) btn.classList.add('wrong');
+  }
+
+  const fb = document.getElementById('quiz-fb');
+  fb.textContent = correct ? '✓ Goed!' : `✗ Fout — het was: ${q.useTermAsQ ? q.correct.k : q.correct.t}`;
+  fb.className = 'quiz-feedback-text ' + (correct ? 'ok' : 'nope');
+  document.getElementById('quiz-next').style.display = 'block';
+}
+
+function quizNext() {
+  quizQIndex++;
+  quizRender();
+}
+
+// ─── INIT ────────────────────────────────────────────────────────────────────
+fcStart();
+quizStart();
 </script>
 </body>
 </html>
